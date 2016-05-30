@@ -58,12 +58,6 @@ for j in (ny - 1).stride(through: 0, by: -1) {
         
         col = col / Double(ns)
         
-//        let u = Double(i) / Double(nx)
-//        let v = Double(j) / Double(ny)
-//        let r = cam.get_ray(u, v)
-//        let p = r.point_at_parameter(2.0)
-//        let col = color(r, world: world)
-        
         let ir = UInt8(255 * col.r)
         let ig = UInt8(255 * col.g)
         let ib = UInt8(255 * col.b)
