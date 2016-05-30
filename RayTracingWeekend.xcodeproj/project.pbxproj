@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2B49006C1CFCC6F600CF9A0E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B49006B1CFCC6F600CF9A0E /* main.swift */; };
+		2B4900731CFCCAEF00CF9A0E /* vec3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4900721CFCCAEF00CF9A0E /* vec3.swift */; };
+		2B4900751CFCCFDE00CF9A0E /* ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4900741CFCCFDE00CF9A0E /* ray.swift */; };
+		2B4900771CFCD5AC00CF9A0E /* shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4900761CFCD5AC00CF9A0E /* shapes.swift */; };
+		2B4900791CFCD5EE00CF9A0E /* hitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4900781CFCD5EE00CF9A0E /* hitable.swift */; };
+		2B49007B1CFCD63100CF9A0E /* sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B49007A1CFCD63100CF9A0E /* sphere.swift */; };
+		2B49007D1CFCD88100CF9A0E /* hitable_list.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B49007C1CFCD88100CF9A0E /* hitable_list.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +31,12 @@
 /* Begin PBXFileReference section */
 		2B4900681CFCC6F600CF9A0E /* RayTracingWeekend */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracingWeekend; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B49006B1CFCC6F600CF9A0E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2B4900721CFCCAEF00CF9A0E /* vec3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vec3.swift; sourceTree = "<group>"; };
+		2B4900741CFCCFDE00CF9A0E /* ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ray.swift; sourceTree = "<group>"; };
+		2B4900761CFCD5AC00CF9A0E /* shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shapes.swift; sourceTree = "<group>"; };
+		2B4900781CFCD5EE00CF9A0E /* hitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hitable.swift; sourceTree = "<group>"; };
+		2B49007A1CFCD63100CF9A0E /* sphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sphere.swift; sourceTree = "<group>"; };
+		2B49007C1CFCD88100CF9A0E /* hitable_list.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hitable_list.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,12 @@
 			isa = PBXGroup;
 			children = (
 				2B49006B1CFCC6F600CF9A0E /* main.swift */,
+				2B4900721CFCCAEF00CF9A0E /* vec3.swift */,
+				2B4900741CFCCFDE00CF9A0E /* ray.swift */,
+				2B4900761CFCD5AC00CF9A0E /* shapes.swift */,
+				2B4900781CFCD5EE00CF9A0E /* hitable.swift */,
+				2B49007A1CFCD63100CF9A0E /* sphere.swift */,
+				2B49007C1CFCD88100CF9A0E /* hitable_list.swift */,
 			);
 			path = RayTracingWeekend;
 			sourceTree = "<group>";
@@ -119,7 +137,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B49007B1CFCD63100CF9A0E /* sphere.swift in Sources */,
+				2B4900791CFCD5EE00CF9A0E /* hitable.swift in Sources */,
+				2B4900731CFCCAEF00CF9A0E /* vec3.swift in Sources */,
+				2B4900751CFCCFDE00CF9A0E /* ray.swift in Sources */,
+				2B49007D1CFCD88100CF9A0E /* hitable_list.swift in Sources */,
 				2B49006C1CFCC6F600CF9A0E /* main.swift in Sources */,
+				2B4900771CFCD5AC00CF9A0E /* shapes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
