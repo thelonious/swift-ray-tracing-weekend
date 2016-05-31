@@ -44,6 +44,7 @@ class Sphere: Hitable  {
                 rec.t = temp
                 rec.p = r.point_at_parameter(rec.t)
                 rec.normal = (rec.p - center) / radius
+                rec.material = material
                 
                 return true
             }
