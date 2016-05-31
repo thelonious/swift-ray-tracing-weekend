@@ -82,6 +82,10 @@ public struct vec3 : CustomStringConvertible {
     }
 }
 
+prefix func - (v: vec3) -> vec3 {
+    return vec3(x: -v.x, y: -v.y, z: -v.z)
+}
+
 func + (v1: vec3, v2: vec3) -> vec3 {
     return vec3(x: v1.x + v2.x, y: v1.y + v2.y, z: v1.z + v2.z)
 }
