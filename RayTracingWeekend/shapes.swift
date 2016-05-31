@@ -12,4 +12,5 @@ public struct hit_record {
     var t = 0.0
     var p = vec3(x: 0, y: 0, z: 0)
     var normal = vec3(x: 0, y: 0, z: 0)
+    var material = metal(a: vec3(x: 0, y: 0, z: 0))
 }
