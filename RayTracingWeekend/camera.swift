@@ -14,15 +14,21 @@ struct Camera {
     let vertical: Vec3
     let origin: Vec3
     
-    init(vfov: Double, aspect: Double) {
+    init(lookFrom: Vec3, lookAt: Vec3, vup: Vec3, vfov: Double, aspect: Double) {
         let theta = vfov * M_PI / 180.0
         let half_height = tan(theta * 0.5)
         let half_width = aspect * half_height
         
-        lower_left_corner = Vec3(x: -half_width, y: -half_height, z: -1.0)
-        horizontal = Vec3(x: 2.0 * half_width, y: 0.0, z: 0.0)
-        vertical = Vec3(x: 0.0, y: 2.0 * half_height, z: 0.0)
-        origin = Vec3(x: 0, y: 0, z: 0)
+        origin = lookFrom
+        
+        let w = (lookFrom - lookAt).unit_vector()
+        let u = vup.cross(w).unit_vector()
+        let v = w.cross(u)
+        
+        lower_left_corner = origin - half_width * u - half_height * v - w
+        horizontal = 2.0 * half_width * u
+        vertical = 2.0 * half_height * v
+        
     }
     
     func get_ray(u: Double, _ v: Double) -> Ray {
