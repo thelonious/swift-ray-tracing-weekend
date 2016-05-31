@@ -75,20 +75,24 @@ let origin = Vec3(x: 0.0, y: 0.0, z: 0.0)
 
 let world = HitableList()
 
-var object = Sphere(c: Vec3(x: 0, y: -100.5, z: -1), r: 100, m: Lambertian(a: Vec3(x: 0.8, y: 0.8, z: 0.0)))
-world.add(object)
-
-object = Sphere(c: Vec3(x: 1, y: 0, z: -1), r: 0.5, m: Metal(a: Vec3(x: 0.8, y: 0.6, z: 0.2), f: 0.0))
-world.add(object)
-
-//object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: 0.5, m: Dielectric(index: 1.5))
+//var object = Sphere(c: Vec3(x: 0, y: -100.5, z: -1), r: 100, m: Lambertian(a: Vec3(x: 0.8, y: 0.8, z: 0.0)))
+//world.add(object)
+//
+//object = Sphere(c: Vec3(x: 1, y: 0, z: -1), r: 0.5, m: Metal(a: Vec3(x: 0.8, y: 0.6, z: 0.2), f: 0.0))
+//world.add(object)
+//
+////object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: 0.5, m: Dielectric(index: 1.5))
+////world.add(object)
+//
+//object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: -0.45, m: Dielectric(index: 1.5))
+//world.add(object)
+//
+//object = Sphere(c: Vec3(x: 0, y: 0, z: -1), r: 0.5, m: Lambertian(a: Vec3(x: 0.1, y: 0.2, z: 0.5)))
 //world.add(object)
 
-object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: -0.45, m: Dielectric(index: 1.5))
-world.add(object)
-
-object = Sphere(c: Vec3(x: 0, y: 0, z: -1), r: 0.5, m: Lambertian(a: Vec3(x: 0.1, y: 0.2, z: 0.5)))
-world.add(object)
+let R = cos(M_PI_4)
+world.add(Sphere(c: Vec3(x: -R, y: 0, z: -1), r: R, m: Lambertian(a: Vec3(x: 0, y: 0, z: 1))))
+world.add(Sphere(c: Vec3(x:  R, y: 0, z: -1), r: R, m: Lambertian(a: Vec3(x: 1, y: 0, z: 0))))
 
 let cam = Camera(vfov: 90.0, aspect: Double(nx) / Double(ny))
 
