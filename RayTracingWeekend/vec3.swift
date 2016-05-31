@@ -76,6 +76,10 @@ public struct vec3 : CustomStringConvertible {
         
         return vec3(x: x * k, y: y * k, z: z * k)
     }
+    
+    func reflect(v2: vec3) -> vec3 {
+        return self - 2 * self.dot(v2) * v2
+    }
 }
 
 func + (v1: vec3, v2: vec3) -> vec3 {
