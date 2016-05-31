@@ -25,7 +25,7 @@ class hitable_list: hitable  {
         for item in list {
             if item.hit(r, t_min, t_max, &rec) {
                 hit_anything = true
-                break;
+//                break;
             }
         }
         
