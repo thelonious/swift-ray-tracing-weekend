@@ -1,5 +1,5 @@
 //
-//  vec3.swift
+//  Vec3.swift
 //  RayTracingWeekend
 //
 //  Created by Kevin Lindsey on 5/30/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct vec3 : CustomStringConvertible {
+public struct Vec3 : CustomStringConvertible {
     var x: Double
     var y: Double
     var z: Double
@@ -59,57 +59,57 @@ public struct vec3 : CustomStringConvertible {
         self.z = z
     }
 
-    func dot(v2: vec3) -> Double {
+    func dot(v2: Vec3) -> Double {
         return x * v2.x + y * v2.y + z * v2.z
     }
     
-    func cross(v2: vec3) -> vec3 {
+    func cross(v2: Vec3) -> Vec3 {
         let rx = y*v2.z - z*v2.y
         let ry = -(x*v2.z - z*v2.x)
         let rz = x * v2.y - y * v2.x
         
-        return vec3(x: rx, y: ry, z: rz)
+        return Vec3(x: rx, y: ry, z: rz)
     }
     
-    func unit_vector() -> vec3 {
+    func unit_vector() -> Vec3 {
         let k = 1.0 / sqrt(x*x + y*y + z*z)
         
-        return vec3(x: x * k, y: y * k, z: z * k)
+        return Vec3(x: x * k, y: y * k, z: z * k)
     }
     
-    func reflect(v2: vec3) -> vec3 {
+    func reflect(v2: Vec3) -> Vec3 {
         return self - 2 * self.dot(v2) * v2
     }
 }
 
-prefix func - (v: vec3) -> vec3 {
-    return vec3(x: -v.x, y: -v.y, z: -v.z)
+prefix func - (v: Vec3) -> Vec3 {
+    return Vec3(x: -v.x, y: -v.y, z: -v.z)
 }
 
-func + (v1: vec3, v2: vec3) -> vec3 {
-    return vec3(x: v1.x + v2.x, y: v1.y + v2.y, z: v1.z + v2.z)
+func + (v1: Vec3, v2: Vec3) -> Vec3 {
+    return Vec3(x: v1.x + v2.x, y: v1.y + v2.y, z: v1.z + v2.z)
 }
 
-func - (v1: vec3, v2: vec3) -> vec3 {
-    return vec3(x: v1.x - v2.x, y: v1.y - v2.y, z: v1.z - v2.z)
+func - (v1: Vec3, v2: Vec3) -> Vec3 {
+    return Vec3(x: v1.x - v2.x, y: v1.y - v2.y, z: v1.z - v2.z)
 }
 
-func * (v1: vec3, v2: vec3) -> vec3 {
-    return vec3(x: v1.x * v2.x, y: v1.y * v2.y, z: v1.z * v2.z)
+func * (v1: Vec3, v2: Vec3) -> Vec3 {
+    return Vec3(x: v1.x * v2.x, y: v1.y * v2.y, z: v1.z * v2.z)
 }
 
-func / (v1: vec3, v2: vec3) -> vec3 {
-    return vec3(x: v1.x / v2.x, y: v1.y / v2.y, z: v1.z / v2.z)
+func / (v1: Vec3, v2: Vec3) -> Vec3 {
+    return Vec3(x: v1.x / v2.x, y: v1.y / v2.y, z: v1.z / v2.z)
 }
 
-func * (v: vec3, s: Double) -> vec3 {
-    return vec3(x: v.x * s, y: v.y * s, z: v.z * s)
+func * (v: Vec3, s: Double) -> Vec3 {
+    return Vec3(x: v.x * s, y: v.y * s, z: v.z * s)
 }
 
-func * (s: Double, v: vec3) -> vec3 {
-    return vec3(x: v.x * s, y: v.y * s, z: v.z * s)
+func * (s: Double, v: Vec3) -> Vec3 {
+    return Vec3(x: v.x * s, y: v.y * s, z: v.z * s)
 }
 
-func / (v: vec3, s: Double) -> vec3 {
-    return vec3(x: v.x / s, y: v.y / s, z: v.z / s)
+func / (v: Vec3, s: Double) -> Vec3 {
+    return Vec3(x: v.x / s, y: v.y / s, z: v.z / s)
 }

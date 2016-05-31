@@ -18,6 +18,7 @@
 		2B4900811CFD15B300CF9A0E /* material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4900801CFD15B300CF9A0E /* material.swift */; };
 		2B4900831CFD171400CF9A0E /* lambertian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4900821CFD171400CF9A0E /* lambertian.swift */; };
 		2B4900851CFD179F00CF9A0E /* metal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4900841CFD179F00CF9A0E /* metal.swift */; };
+		2B4900891CFD24EF00CF9A0E /* dialectric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4900881CFD24EF00CF9A0E /* dialectric.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,7 @@
 		2B4900801CFD15B300CF9A0E /* material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = material.swift; sourceTree = "<group>"; };
 		2B4900821CFD171400CF9A0E /* lambertian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lambertian.swift; sourceTree = "<group>"; };
 		2B4900841CFD179F00CF9A0E /* metal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = metal.swift; sourceTree = "<group>"; };
+		2B4900881CFD24EF00CF9A0E /* dialectric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dialectric.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,17 +79,18 @@
 		2B49006A1CFCC6F600CF9A0E /* RayTracingWeekend */ = {
 			isa = PBXGroup;
 			children = (
+				2B49007E1CFCDCF500CF9A0E /* camera.swift */,
+				2B4900881CFD24EF00CF9A0E /* dialectric.swift */,
+				2B49007C1CFCD88100CF9A0E /* hitable_list.swift */,
+				2B4900781CFCD5EE00CF9A0E /* hitable.swift */,
+				2B4900821CFD171400CF9A0E /* lambertian.swift */,
 				2B49006B1CFCC6F600CF9A0E /* main.swift */,
-				2B4900721CFCCAEF00CF9A0E /* vec3.swift */,
+				2B4900801CFD15B300CF9A0E /* material.swift */,
+				2B4900841CFD179F00CF9A0E /* metal.swift */,
 				2B4900741CFCCFDE00CF9A0E /* ray.swift */,
 				2B4900761CFCD5AC00CF9A0E /* shapes.swift */,
-				2B4900781CFCD5EE00CF9A0E /* hitable.swift */,
 				2B49007A1CFCD63100CF9A0E /* sphere.swift */,
-				2B49007C1CFCD88100CF9A0E /* hitable_list.swift */,
-				2B49007E1CFCDCF500CF9A0E /* camera.swift */,
-				2B4900801CFD15B300CF9A0E /* material.swift */,
-				2B4900821CFD171400CF9A0E /* lambertian.swift */,
-				2B4900841CFD179F00CF9A0E /* metal.swift */,
+				2B4900721CFCCAEF00CF9A0E /* vec3.swift */,
 			);
 			path = RayTracingWeekend;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				2B4900791CFCD5EE00CF9A0E /* hitable.swift in Sources */,
 				2B4900731CFCCAEF00CF9A0E /* vec3.swift in Sources */,
 				2B4900751CFCCFDE00CF9A0E /* ray.swift in Sources */,
+				2B4900891CFD24EF00CF9A0E /* dialectric.swift in Sources */,
 				2B49007D1CFCD88100CF9A0E /* hitable_list.swift in Sources */,
 				2B49006C1CFCC6F600CF9A0E /* main.swift in Sources */,
 				2B4900851CFD179F00CF9A0E /* metal.swift in Sources */,

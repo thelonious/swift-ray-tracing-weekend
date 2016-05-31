@@ -9,10 +9,10 @@
 import Foundation
 
 public struct ray {
-    var origin: vec3
-    var direction: vec3
+    var origin: Vec3
+    var direction: Vec3
     
-    func point_at_parameter(t: Double) -> vec3 {
+    func point_at_parameter(t: Double) -> Vec3 {
         return origin + t * direction
     }
 }

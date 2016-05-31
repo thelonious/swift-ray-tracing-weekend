@@ -8,14 +8,14 @@
 
 import Foundation
 
-class hitable_list: hitable  {
-    var list = [hitable]()
+class HitableList: Hitable  {
+    var list = [Hitable]()
     
     var count: Int {
         return list.count
     }
     
-    func add(h: hitable) {
+    func add(h: Hitable) {
         list.append(h)
     }
     

@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol hitable {
+public protocol Hitable {
     func hit(r: ray, _ t_min: Double, _ t_max: Double, inout _ rec: hit_record) -> Bool
 }

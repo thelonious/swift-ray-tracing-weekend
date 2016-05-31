@@ -8,12 +8,12 @@
 
 import Foundation
 
-class sphere: hitable  {
-    var center = vec3(x: 0.0, y: 0.0, z: 0.0)
+class Sphere: Hitable  {
+    var center = Vec3(x: 0.0, y: 0.0, z: 0.0)
     var radius = 0.0
     var material: Material
     
-    init(c: vec3, r: Double, m: Material) {
+    init(c: Vec3, r: Double, m: Material) {
         center = c
         radius = r
         material = m
