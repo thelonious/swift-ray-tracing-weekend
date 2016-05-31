@@ -11,10 +11,12 @@ import Foundation
 class sphere: hitable  {
     var center = vec3(x: 0.0, y: 0.0, z: 0.0)
     var radius = 0.0
+    var material: Material
     
-    init(c: vec3, r: Double) {
+    init(c: vec3, r: Double, m: Material) {
         center = c
         radius = r
+        material = m
     }
     
     func hit(r: ray, _ t_min: Double, _ t_max: Double, inout _ rec: hit_record) -> Bool {
