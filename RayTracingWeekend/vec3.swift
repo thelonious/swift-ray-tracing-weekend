@@ -82,9 +82,13 @@ public struct Vec3 : CustomStringConvertible {
     }
 }
 
+// prefixes
+
 prefix func - (v: Vec3) -> Vec3 {
     return Vec3(x: -v.x, y: -v.y, z: -v.z)
 }
+
+// binaries
 
 func + (v1: Vec3, v2: Vec3) -> Vec3 {
     return Vec3(x: v1.x + v2.x, y: v1.y + v2.y, z: v1.z + v2.z)

@@ -43,7 +43,7 @@ func color(r: ray, world: Hitable, depth: Int) -> Vec3 {
 
 var nx = 400
 var ny = 200
-var ns = 50
+var ns = 100
 
 for i in 0..<Process.arguments.count {
     let arg = Process.arguments[i]
