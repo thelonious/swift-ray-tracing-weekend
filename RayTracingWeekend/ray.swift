@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ray {
+public struct Ray {
     var origin: Vec3
     var direction: Vec3
     

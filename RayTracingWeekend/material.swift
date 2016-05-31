@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Material {
-    func scatter(r_in: ray, _ rec: hit_record, inout _ attentuation: Vec3, inout _ scattered: ray) -> Bool
+    func scatter(r_in: Ray, _ rec: HitRecord, inout _ attentuation: Vec3, inout _ scattered: Ray) -> Bool
 }

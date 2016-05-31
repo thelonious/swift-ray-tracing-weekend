@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol Hitable {
-    func hit(r: ray, _ t_min: Double, _ t_max: Double, inout _ rec: hit_record) -> Bool
+    func hit(r: Ray, _ t_min: Double, _ t_max: Double, inout _ rec: HitRecord) -> Bool
 }

@@ -17,10 +17,10 @@ class Metal: Material {
         fuzz = f < 1 ? f : 1
     }
     
-    func scatter(ray_in: ray, _ rec: hit_record, inout _ attenuation: Vec3, inout _ scattered: ray) -> Bool {
-        let reflected = ray_in.direction.unit_vector().reflect(rec.normal)
+    func scatter(r_in: Ray, _ rec: HitRecord, inout _ attenuation: Vec3, inout _ scattered: Ray) -> Bool {
+        let reflected = r_in.direction.unit_vector().reflect(rec.normal)
         
-        scattered = ray(origin: rec.p, direction: reflected + fuzz * random_in_unit_sphere())
+        scattered = Ray(origin: rec.p, direction: reflected + fuzz * random_in_unit_sphere())
         attenuation = albedo
         
         return scattered.direction.dot(rec.normal) > 0

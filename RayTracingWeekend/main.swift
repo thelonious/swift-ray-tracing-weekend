@@ -18,11 +18,11 @@ func random_in_unit_sphere() -> Vec3 {
     return p
 }
 
-func color(r: ray, world: Hitable, depth: Int) -> Vec3 {
-    var rec = hit_record()
+func color(r: Ray, world: Hitable, depth: Int) -> Vec3 {
+    var rec = HitRecord()
     
     if world.hit(r, 1e-6, DBL_MAX, &rec) {
-        var scattered = ray(origin: Vec3(x: 0, y: 0, z: 0), direction: Vec3(x: 0, y: 0, z: 0))
+        var scattered = Ray(origin: Vec3(x: 0, y: 0, z: 0), direction: Vec3(x: 0, y: 0, z: 0))
         var attenuantion = Vec3(x: 0, y: 0, z: 0)
         
         if depth < 50 && rec.material.scatter(r, rec, &attenuantion, &scattered) {
@@ -41,9 +41,9 @@ func color(r: ray, world: Hitable, depth: Int) -> Vec3 {
 
 // main
 
-var nx = 400
-var ny = 200
-var ns = 100
+var nx = 200
+var ny = 100
+var ns = 50
 
 for i in 0..<Process.arguments.count {
     let arg = Process.arguments[i]
@@ -87,7 +87,7 @@ world.add(object)
 object = Sphere(c: Vec3(x: 0, y: 0, z: -1), r: 0.5, m: Lambertian(a: Vec3(x: 0.1, y: 0.2, z: 0.5)))
 world.add(object)
 
-let cam = camera()
+let cam = Camera()
 
 for j in (ny - 1).stride(through: 0, by: -1) {
     for i in 0..<nx {

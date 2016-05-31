@@ -15,10 +15,10 @@ class Lambertian: Material {
         albedo = a
     }
     
-    func scatter(ray_in: ray, _ rec: hit_record, inout _ attenuation: Vec3, inout _ scattered: ray) -> Bool {
+    func scatter(ray_in: Ray, _ rec: HitRecord, inout _ attenuation: Vec3, inout _ scattered: Ray) -> Bool {
         let target = rec.p + rec.normal + random_in_unit_sphere()
         
-        scattered = ray(origin: rec.p, direction: target - rec.p)
+        scattered = Ray(origin: rec.p, direction: target - rec.p)
         attenuation = albedo
         
         return true

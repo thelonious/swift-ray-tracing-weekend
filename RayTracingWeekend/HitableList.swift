@@ -19,7 +19,7 @@ class HitableList: Hitable  {
         list.append(h)
     }
     
-    func hit(r: ray, _ t_min: Double, _ t_max: Double, inout _ rec: hit_record) -> Bool {
+    func hit(r: Ray, _ t_min: Double, _ t_max: Double, inout _ rec: HitRecord) -> Bool {
         var hit_anything = false
         
         for item in list {
