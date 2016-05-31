@@ -81,13 +81,16 @@ world.add(object)
 object = Sphere(c: Vec3(x: 1, y: 0, z: -1), r: 0.5, m: Metal(a: Vec3(x: 0.8, y: 0.6, z: 0.2), f: 0.0))
 world.add(object)
 
-object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: 0.5, m: Dielectric(index: 1.5))
+//object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: 0.5, m: Dielectric(index: 1.5))
+//world.add(object)
+
+object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: -0.45, m: Dielectric(index: 1.5))
 world.add(object)
 
 object = Sphere(c: Vec3(x: 0, y: 0, z: -1), r: 0.5, m: Lambertian(a: Vec3(x: 0.1, y: 0.2, z: 0.5)))
 world.add(object)
 
-let cam = Camera()
+let cam = Camera(vfov: 90.0, aspect: Double(nx) / Double(ny))
 
 for j in (ny - 1).stride(through: 0, by: -1) {
     for i in 0..<nx {
