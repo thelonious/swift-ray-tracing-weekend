@@ -18,6 +18,16 @@ func random_in_unit_sphere() -> Vec3 {
     return p
 }
 
+func random_in_unit_disk() -> Vec3 {
+    var p = Vec3(x: 0, y: 0, z: 0)
+    
+    repeat {
+        p = 2.0 * Vec3(x: drand48(), y: drand48(), z: 0.0) - Vec3(x: 1, y: 1, z: 0)
+    } while p.squared_length >= 1.0
+    
+    return p
+}
+
 func color(r: Ray, world: Hitable, depth: Int) -> Vec3 {
     var rec = HitRecord()
     
@@ -39,11 +49,78 @@ func color(r: Ray, world: Hitable, depth: Int) -> Vec3 {
     }
 }
 
+func makeWorld() -> Hitable {
+    let world = HitableList()
+    var object: Hitable
+    
+    object = Sphere(c: Vec3(x: 0, y: -100.5, z: -1), r: 100, m: Lambertian(a: Vec3(x: 0.7, y: 0.23, z: 0.12)))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: 1, y: 0, z: -1), r: 0.5, m: Metal(a: Vec3(x: 0.8, y: 0.6, z: 0.2), f: 0.1))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: 0.5, m: Dielectric(index: 1.0))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: -0.49, m: Dielectric(index: 1.0))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: 0, y: 0, z: -1), r: 0.5, m: Lambertian(a: Vec3(x: 0.24, y: 0.5, z: 0.15)))
+    world.add(object)
+    
+    return world
+}
+
+func makeRandomWorld() -> Hitable {
+    let world = HitableList()
+    var object: Hitable
+    
+    object = Sphere(c: Vec3(x: 0, y: -1000, z: 0), r: 1000, m: Lambertian(a: Vec3(x: 0.5, y: 0.5, z: 0.5)))
+    world.add(object)
+    
+    for a in -11..<11 {
+        for b in -11..<11 {
+            let chooseMaterial = drand48()
+            let center = Vec3(x: Double(a) + 0.9 * drand48(), y: 0.2, z: Double(b) + 0.9 * drand48())
+            
+            if (center - Vec3(x: 4, y: 0.2, z: 0)).length > 0.9 {
+                if chooseMaterial < 0.8 {
+                    object = Sphere(c: center, r: 0.2, m: Lambertian(a: Vec3(x: drand48()*drand48(), y: drand48()*drand48(), z: drand48()*drand48())))
+                    world.add(object)
+                }
+                else if chooseMaterial < 0.95 {
+                    object = Sphere(
+                        c: center,
+                        r: 0.2,
+                        m: Metal(a: Vec3(x: 0.5 * (1.0 + drand48()), y: 0.5 * (1.0 + drand48()), z: 0.5 * (1.0 + drand48())), f: 0)
+                    )
+                    world.add(object)
+                }
+                else {
+                    object = Sphere(c: center, r: 0.2, m: Dielectric(index: 1.5))
+                    world.add(object)
+                }
+            }
+        }
+    }
+    
+    object = Sphere(c: Vec3(x: 0, y: 1, z: 0), r: 1, m: Dielectric(index: 1.5))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: -4, y: 1, z: 0), r: 1, m: Lambertian(a: Vec3(x: 0.4, y: 0.2, z: 0.1)))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: 4, y: 1, z: 0), r: 1, m: Metal(a: Vec3(x: 0.7, y: 0.6, z: 0.5 ), f: 0))
+    world.add(object)
+    
+    return world
+}
+
 // main
 
-var nx = 200
-var ny = 100
-var ns = 50
+var nx = 400
+var ny = 200
+var ns = 10
 
 for i in 0..<Process.arguments.count {
     let arg = Process.arguments[i]
@@ -64,39 +141,26 @@ for i in 0..<Process.arguments.count {
     }
 }
 
+let lookFrom = Vec3(x: 13, y: 2, z: 3)
+let lookAt = Vec3(x: 0, y: 0, z: 0)
+let distToFocus = 10.0 //(lookFrom - lookAt).length
+let aperture = 0.1 // 2.0
+let cam = Camera(
+    lookFrom: lookFrom,
+    lookAt: lookAt,
+    vup: Vec3(x: 0, y: 1, z: 0),
+    vfov: 20.0,
+    aspect: Double(nx) / Double(ny),
+    aperture: aperture,
+    focus_dist: distToFocus
+)
+
+//let world = makeWorld()
+let world = makeRandomWorld()
+
 print("P3")
 print(nx, ny)
 print(255)
-
-let lower_left_corner = Vec3(x: -2.0, y: -1.0, z: -1.0)
-let horizontal = Vec3(x: 4.0, y: 0.0, z: 0.0)
-let vertical = Vec3(x: 0.0, y: 2.0, z: 0.0)
-let origin = Vec3(x: 0.0, y: 0.0, z: 0.0)
-
-let world = HitableList()
-
-var object = Sphere(c: Vec3(x: 0, y: -100.5, z: -1), r: 100, m: Lambertian(a: Vec3(x: 0.8, y: 0.8, z: 0.0)))
-world.add(object)
-
-object = Sphere(c: Vec3(x: 1, y: 0, z: -1), r: 0.5, m: Metal(a: Vec3(x: 0.8, y: 0.6, z: 0.2), f: 0.0))
-world.add(object)
-
-//object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: 0.5, m: Dielectric(index: 1.5))
-//world.add(object)
-
-object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: -0.45, m: Dielectric(index: 1.5))
-world.add(object)
-
-object = Sphere(c: Vec3(x: 0, y: 0, z: -1), r: 0.5, m: Lambertian(a: Vec3(x: 0.1, y: 0.2, z: 0.5)))
-world.add(object)
-
-let cam = Camera(
-    lookFrom: Vec3(x: -2, y: 2, z: 1),
-    lookAt: Vec3(x: 0, y: 0, z: -1),
-    vup: Vec3(x: 0, y: 1, z: 0),
-    vfov: 30.0,
-    aspect: Double(nx) / Double(ny)
-)
 
 for j in (ny - 1).stride(through: 0, by: -1) {
     for i in 0..<nx {
