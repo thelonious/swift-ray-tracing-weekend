@@ -29,9 +29,7 @@ func random_in_unit_disk() -> Vec3 {
 }
 
 func color(r: Ray, world: Hitable, depth: Int) -> Vec3 {
-    var rec = HitRecord()
-    
-    if world.hit(r, 1e-6, DBL_MAX, &rec) {
+    if let rec = world.hit(r, 1e-6, DBL_MAX) {
         var scattered = Ray(origin: Vec3(x: 0, y: 0, z: 0), direction: Vec3(x: 0, y: 0, z: 0), time: 0.0)
         var attenuantion = Vec3(x: 0, y: 0, z: 0)
         
@@ -78,8 +76,8 @@ func makeRandomWorld() -> Hitable {
     object = Sphere(c: Vec3(x: 0, y: -1000, z: 0), r: 1000, m: Lambertian(a: Vec3(x: 0.5, y: 0.5, z: 0.5)))
     world.add(object)
     
-    for a in -10..<10 {
-        for b in -10..<10 {
+    for a in -5..<5 {
+        for b in -5..<5 {
             let chooseMaterial = drand48()
             let center = Vec3(x: Double(a) + 0.9 * drand48(), y: 0.2, z: Double(b) + 0.9 * drand48())
             

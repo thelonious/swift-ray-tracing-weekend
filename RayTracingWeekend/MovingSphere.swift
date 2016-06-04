@@ -25,7 +25,9 @@ class MovingSphere : Hitable {
         material = m
     }
     
-    func hit(r: Ray, _ t_min: Double, _ t_max: Double, inout _ rec: HitRecord) -> Bool {
+    func hit(r: Ray, _ t_min: Double, _ t_max: Double) -> HitRecord? {
+        var result: HitRecord? = nil
+        
         let oc = r.origin - center(r.time)
         let a = r.direction.squared_length
         let b = oc.dot(r.direction)
@@ -36,44 +38,36 @@ class MovingSphere : Hitable {
             var temp = (-b - discrim) / a
             
             if temp < t_max && temp > t_min {
-                rec.t = temp
-                rec.p = r.point_at_parameter(rec.t)
-                rec.normal = (rec.p - center(r.time)) / radius
-                rec.material = material
+                let point = r.point_at_parameter(temp)
                 
-                return true
+                result = HitRecord(t: temp, p: point, normal: (point - center(r.time)) / radius, material: material)
             }
-            
-            temp = (-b + discrim) / a
-            
-            if temp < t_max && temp > t_min {
-                rec.t = temp
-                rec.p = r.point_at_parameter(rec.t)
-                rec.normal = (rec.p - center(r.time)) / radius
-                rec.material = material
+            else {
+                temp = (-b + discrim) / a
                 
-                return true
+                if temp < t_max && temp > t_min {
+                    let point = r.point_at_parameter(temp)
+                    
+                    result = HitRecord(t: temp, p: point, normal: (point - center(r.time)) / radius, material: material)                }
             }
         }
         
-        return false
+        return result
     }
     
     func center(time: Double) -> Vec3 {
         return center0 + ((time - time0) / (time1 - time0)) * (center1 - center0)
     }
     
-    func boundingBox(t0: Double, _ t1: Double, inout _ box: AABB) -> Bool {
+    func boundingBox(t0: Double, _ t1: Double) -> AABB? {
         let sphere0 = Sphere(c: center(t0), r: radius, m: material)
         let sphere1 = Sphere(c: center(t1), r: radius, m: material)
-        var aabb0 = AABB(min: Vec3(x: 0, y: 0, z: 0), max: Vec3(x: 0, y: 0, z: 0))
-        var aabb1 = AABB(min: Vec3(x: 0, y: 0, z: 0), max: Vec3(x: 0, y: 0, z: 0))
         
-        sphere0.boundingBox(t0, t1, &aabb0)
-        sphere1.boundingBox(t0, t1, &aabb1)
-        
-        box = surroundingBox(aabb0, box1: aabb1)
-        
-        return true
+        if let aabb0 = sphere0.boundingBox(t0, t1), aabb1 = sphere1.boundingBox(t0, t1) {
+            return surroundingBox(aabb0, aabb1)
+        }
+        else {
+            return nil
+        }
     }
 }

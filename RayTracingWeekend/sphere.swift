@@ -19,7 +19,9 @@ class Sphere: Hitable  {
         material = m
     }
     
-    func hit(r: Ray, _ t_min: Double, _ t_max: Double, inout _ rec: HitRecord) -> Bool {
+    func hit(r: Ray, _ t_min: Double, _ t_max: Double) -> HitRecord? {
+        var result: HitRecord? = nil
+        
         let oc = r.origin - center
         let a = r.direction.squared_length
         let b = oc.dot(r.direction)
@@ -30,32 +32,25 @@ class Sphere: Hitable  {
             var temp = (-b - discrim) / a
             
             if temp < t_max && temp > t_min {
-                rec.t = temp
-                rec.p = r.point_at_parameter(rec.t)
-                rec.normal = (rec.p - center) / radius
-                rec.material = material
+                let point = r.point_at_parameter(temp)
                 
-                return true
+                result = HitRecord(t: temp, p: point, normal: (point - center) / radius, material: material)
             }
-            
-            temp = (-b + discrim) / a
-            
-            if temp < t_max && temp > t_min {
-                rec.t = temp
-                rec.p = r.point_at_parameter(rec.t)
-                rec.normal = (rec.p - center) / radius
-                rec.material = material
+            else {
+                temp = (-b + discrim) / a
                 
-                return true
+                if temp < t_max && temp > t_min {
+                    let point = r.point_at_parameter(temp)
+                    
+                    result = HitRecord(t: temp, p: point, normal: (point - center) / radius, material: material)
+                }
             }
         }
         
-        return false
+        return result
     }
     
-    func boundingBox(t0: Double, _ t1: Double, inout _ box: AABB) -> Bool {
-        box = AABB(min: center - Vec3(x: radius, y: radius, z: radius), max: center + Vec3(x: radius, y: radius, z: radius))
-        
-        return true
+    func boundingBox(t0: Double, _ t1: Double) -> AABB? {
+        return AABB(min: center - Vec3(x: radius, y: radius, z: radius), max: center + Vec3(x: radius, y: radius, z: radius))
     }
 }

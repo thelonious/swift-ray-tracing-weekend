@@ -37,7 +37,7 @@ func ffmax(a: Double, _ b: Double) -> Double {
     return a > b ? a : b
 }
 
-func surroundingBox(box0: AABB, box1: AABB) -> AABB {
+func surroundingBox(box0: AABB, _ box1: AABB) -> AABB {
     let small = Vec3(
         x: min(box0.min.x, box1.min.x),
         y: min(box0.min.y, box1.min.y),
