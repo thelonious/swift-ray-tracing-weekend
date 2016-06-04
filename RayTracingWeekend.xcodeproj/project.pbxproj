@@ -22,6 +22,11 @@
 		0ADF476F1CFDE6E400862832 /* Vec3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47631CFDE6E400862832 /* Vec3.swift */; };
 		2BD336341D02606700441C73 /* AABB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336331D02606700441C73 /* AABB.swift */; };
 		2BD336361D028C2200441C73 /* BVHNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336351D028C2200441C73 /* BVHNode.swift */; };
+		2BD336381D03725E00441C73 /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336371D03725E00441C73 /* Texture.swift */; };
+		2BD3363A1D03729200441C73 /* ConstantTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336391D03729200441C73 /* ConstantTexture.swift */; };
+		2BD3363C1D03747A00441C73 /* CheckerTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD3363B1D03747A00441C73 /* CheckerTexture.swift */; };
+		2BD3363E1D03767200441C73 /* Perlin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD3363D1D03767200441C73 /* Perlin.swift */; };
+		2BD336401D03789500441C73 /* NoiseTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD3363F1D03789500441C73 /* NoiseTexture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +58,11 @@
 		2B4900681CFCC6F600CF9A0E /* RayTracingWeekend */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracingWeekend; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD336331D02606700441C73 /* AABB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AABB.swift; sourceTree = "<group>"; };
 		2BD336351D028C2200441C73 /* BVHNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVHNode.swift; sourceTree = "<group>"; };
+		2BD336371D03725E00441C73 /* Texture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
+		2BD336391D03729200441C73 /* ConstantTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantTexture.swift; sourceTree = "<group>"; };
+		2BD3363B1D03747A00441C73 /* CheckerTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckerTexture.swift; sourceTree = "<group>"; };
+		2BD3363D1D03767200441C73 /* Perlin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perlin.swift; sourceTree = "<group>"; };
+		2BD3363F1D03789500441C73 /* NoiseTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseTexture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				2BD336331D02606700441C73 /* AABB.swift */,
+				2BD336351D028C2200441C73 /* BVHNode.swift */,
 				0ADF47581CFDE6E400862832 /* Camera.swift */,
+				2BD3363B1D03747A00441C73 /* CheckerTexture.swift */,
+				2BD336391D03729200441C73 /* ConstantTexture.swift */,
 				0ADF47591CFDE6E400862832 /* Dialectric.swift */,
 				0ADF475A1CFDE6E400862832 /* Hitable.swift */,
 				0ADF475B1CFDE6E400862832 /* HitableList.swift */,
@@ -96,10 +109,12 @@
 				0ADF475F1CFDE6E400862832 /* Material.swift */,
 				0ADF47601CFDE6E400862832 /* Metal.swift */,
 				0A5014821D00D4E8005A6764 /* MovingSphere.swift */,
+				2BD3363F1D03789500441C73 /* NoiseTexture.swift */,
+				2BD3363D1D03767200441C73 /* Perlin.swift */,
 				0ADF47611CFDE6E400862832 /* Ray.swift */,
 				0ADF47621CFDE6E400862832 /* Sphere.swift */,
+				2BD336371D03725E00441C73 /* Texture.swift */,
 				0ADF47631CFDE6E400862832 /* Vec3.swift */,
-				2BD336351D028C2200441C73 /* BVHNode.swift */,
 			);
 			path = RayTracingWeekend;
 			sourceTree = "<group>";
@@ -166,13 +181,18 @@
 				0ADF476C1CFDE6E400862832 /* Metal.swift in Sources */,
 				0ADF47661CFDE6E400862832 /* Hitable.swift in Sources */,
 				0ADF476A1CFDE6E400862832 /* main.swift in Sources */,
+				2BD3363C1D03747A00441C73 /* CheckerTexture.swift in Sources */,
+				2BD3363A1D03729200441C73 /* ConstantTexture.swift in Sources */,
 				0ADF476D1CFDE6E400862832 /* Ray.swift in Sources */,
 				0ADF476E1CFDE6E400862832 /* Sphere.swift in Sources */,
 				2BD336361D028C2200441C73 /* BVHNode.swift in Sources */,
 				0ADF47671CFDE6E400862832 /* HitableList.swift in Sources */,
+				2BD336381D03725E00441C73 /* Texture.swift in Sources */,
 				0ADF47691CFDE6E400862832 /* Lambertian.swift in Sources */,
 				0ADF47641CFDE6E400862832 /* Camera.swift in Sources */,
 				0ADF47681CFDE6E400862832 /* HitRecord.swift in Sources */,
+				2BD3363E1D03767200441C73 /* Perlin.swift in Sources */,
+				2BD336401D03789500441C73 /* NoiseTexture.swift in Sources */,
 				0A5014831D00D4E8005A6764 /* MovingSphere.swift in Sources */,
 				0ADF476F1CFDE6E400862832 /* Vec3.swift in Sources */,
 				0ADF47651CFDE6E400862832 /* Dialectric.swift in Sources */,

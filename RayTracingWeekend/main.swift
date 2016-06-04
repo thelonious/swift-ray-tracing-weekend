@@ -51,7 +51,7 @@ func makeWorld() -> Hitable {
     let world = HitableList()
     var object: Hitable
     
-    object = Sphere(c: Vec3(x: 0, y: -100.5, z: -1), r: 100, m: Lambertian(a: Vec3(x: 0.7, y: 0.23, z: 0.12)))
+    object = Sphere(c: Vec3(x: 0, y: -100.5, z: -1), r: 100, m: Lambertian(a: ConstantTexture(color: Vec3(x: 0.7, y: 0.23, z: 0.12))))
     world.add(object)
     
     object = Sphere(c: Vec3(x: 1, y: 0, z: -1), r: 0.5, m: Metal(a: Vec3(x: 0.8, y: 0.6, z: 0.2), f: 0.1))
@@ -63,7 +63,7 @@ func makeWorld() -> Hitable {
     object = Sphere(c: Vec3(x: -1, y: 0, z: -1), r: -0.49, m: Dielectric(index: 1.0))
     world.add(object)
     
-    object = Sphere(c: Vec3(x: 0, y: 0, z: -1), r: 0.5, m: Lambertian(a: Vec3(x: 0.24, y: 0.5, z: 0.15)))
+    object = Sphere(c: Vec3(x: 0, y: 0, z: -1), r: 0.5, m: Lambertian(a: ConstantTexture(color: Vec3(x: 0.24, y: 0.5, z: 0.15))))
     world.add(object)
     
     return world
@@ -73,7 +73,10 @@ func makeRandomWorld() -> Hitable {
     let world = HitableList()
     var object: Hitable
     
-    object = Sphere(c: Vec3(x: 0, y: -1000, z: 0), r: 1000, m: Lambertian(a: Vec3(x: 0.5, y: 0.5, z: 0.5)))
+    let oddColor = ConstantTexture(color: Vec3(x: 0.2, y: 0.3, z: 0.1))
+    let evenColor = ConstantTexture(color: Vec3(x: 0.9, y: 0.9, z: 0.9))
+    let checker = CheckerTexture(odd: oddColor, even: evenColor)
+    object = Sphere(c: Vec3(x: 0, y: -1000, z: 0), r: 1000, m: Lambertian(a: checker))
     world.add(object)
     
     for a in -5..<5 {
@@ -89,7 +92,7 @@ func makeRandomWorld() -> Hitable {
                         t0: 0.0,
                         t1: 1.0,
                         r: 0.2,
-                        m: Lambertian(a: Vec3(x: drand48()*drand48(), y: drand48()*drand48(), z: drand48()*drand48()))
+                        m: Lambertian(a: ConstantTexture(color: Vec3(x: drand48()*drand48(), y: drand48()*drand48(), z: drand48()*drand48())))
                     )
                     world.add(object)
                 }
@@ -112,7 +115,7 @@ func makeRandomWorld() -> Hitable {
     object = Sphere(c: Vec3(x: 0, y: 1, z: 0), r: 1, m: Dielectric(index: 1.5))
     world.add(object)
     
-    object = Sphere(c: Vec3(x: -4, y: 1, z: 0), r: 1, m: Lambertian(a: Vec3(x: 0.4, y: 0.2, z: 0.1)))
+    object = Sphere(c: Vec3(x: -4, y: 1, z: 0), r: 1, m: Lambertian(a: ConstantTexture(color: Vec3(x: 0.4, y: 0.2, z: 0.1))))
     world.add(object)
     
     object = Sphere(c: Vec3(x: 4, y: 1, z: 0), r: 1, m: Metal(a: Vec3(x: 0.7, y: 0.6, z: 0.5 ), f: 0))
@@ -121,10 +124,24 @@ func makeRandomWorld() -> Hitable {
     return world
 }
 
+func makePerlinSpheres() -> Hitable {
+    let perlinTexture = NoiseTexture()
+    let world = HitableList()
+    var object: Hitable
+    
+    object = Sphere(c: Vec3(x: 0, y: -1000, z: 0), r: 1000, m: Lambertian(a: perlinTexture))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: 0, y: 2, z: 0), r: 2, m: Lambertian(a: perlinTexture))
+    world.add(object)
+    
+    return world
+}
+
 // main
 
-var nx = 200
-var ny = 100
+var nx = 400
+var ny = 200
 var ns = 25
 
 for i in 0..<Process.arguments.count {
@@ -163,7 +180,8 @@ let cam = Camera(
 )
 
 //let world = makeWorld()
-let world = makeRandomWorld()
+//let world = makeRandomWorld()
+let world = makePerlinSpheres()
 
 print("P3")
 print(nx, ny)

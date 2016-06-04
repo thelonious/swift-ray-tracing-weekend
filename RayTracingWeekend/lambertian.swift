@@ -9,9 +9,9 @@
 import Foundation
 
 class Lambertian: Material {
-    var albedo: Vec3
+    var albedo: Texture
     
-    init(a: Vec3) {
+    init(a: Texture) {
         albedo = a
     }
     
@@ -19,7 +19,7 @@ class Lambertian: Material {
         let target = rec.p + rec.normal + random_in_unit_sphere()
         
         scattered = Ray(origin: rec.p, direction: target - rec.p, time: ray_in.time)
-        attenuation = albedo
+        attenuation = albedo.value(0, 0, rec.p)
         
         return true
     }
