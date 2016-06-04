@@ -125,9 +125,9 @@ func makeRandomWorld() -> Hitable {
 
 // main
 
-var nx = 800
-var ny = 400
-var ns = 10
+var nx = 200
+var ny = 100
+var ns = 25
 
 for i in 0..<Process.arguments.count {
     let arg = Process.arguments[i]

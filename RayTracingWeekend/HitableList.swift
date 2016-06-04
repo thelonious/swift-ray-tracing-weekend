@@ -34,4 +34,31 @@ class HitableList: Hitable  {
         
         return hit_anything
     }
+    
+    func boundingBox(t0: Double, _ t1: Double, inout _ box: AABB) -> Bool {
+        if list.count < 1 {
+            return false
+        }
+        
+        var tempBox = AABB(min: Vec3(x: 0, y: 0, z: 0), max: Vec3(x: 0, y: 0, z: 0))
+        let firstTrue = list[0].boundingBox(t0, t1, &tempBox)
+        
+        if !firstTrue {
+            return false
+        }
+        else {
+            box = tempBox
+        }
+        
+        for elem in list {
+            if elem.boundingBox(t0, t1, &tempBox) {
+                box = surroundingBox(box, box1: tempBox)
+            }
+            else {
+                return false
+            }
+        }
+        
+        return true
+    }
 }

@@ -52,4 +52,10 @@ class Sphere: Hitable  {
         
         return false
     }
+    
+    func boundingBox(t0: Double, _ t1: Double, inout _ box: AABB) -> Bool {
+        box = AABB(min: center - Vec3(x: radius, y: radius, z: radius), max: center + Vec3(x: radius, y: radius, z: radius))
+        
+        return true
+    }
 }

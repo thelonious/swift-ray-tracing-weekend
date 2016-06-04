@@ -62,4 +62,18 @@ class MovingSphere : Hitable {
     func center(time: Double) -> Vec3 {
         return center0 + ((time - time0) / (time1 - time0)) * (center1 - center0)
     }
+    
+    func boundingBox(t0: Double, _ t1: Double, inout _ box: AABB) -> Bool {
+        let sphere0 = Sphere(c: center(t0), r: radius, m: material)
+        let sphere1 = Sphere(c: center(t1), r: radius, m: material)
+        var aabb0 = AABB(min: Vec3(x: 0, y: 0, z: 0), max: Vec3(x: 0, y: 0, z: 0))
+        var aabb1 = AABB(min: Vec3(x: 0, y: 0, z: 0), max: Vec3(x: 0, y: 0, z: 0))
+        
+        sphere0.boundingBox(t0, t1, &aabb0)
+        sphere1.boundingBox(t0, t1, &aabb1)
+        
+        box = surroundingBox(aabb0, box1: aabb1)
+        
+        return true
+    }
 }
