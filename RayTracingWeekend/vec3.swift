@@ -40,6 +40,19 @@ public struct Vec3 : CustomStringConvertible {
         }
     }
     
+    subscript(index: Int) -> Double {
+        switch (index) {
+        case 0:
+            return x
+        case 1:
+            return y
+        case 2:
+            return z
+        default:
+            assert(false, "Index out of range");
+        }
+    }
+    
     public var description: String {
         return "\(x) \(y) \(z)"
     }
