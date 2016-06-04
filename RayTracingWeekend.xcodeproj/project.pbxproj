@@ -21,6 +21,7 @@
 		0ADF476E1CFDE6E400862832 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47621CFDE6E400862832 /* Sphere.swift */; };
 		0ADF476F1CFDE6E400862832 /* Vec3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47631CFDE6E400862832 /* Vec3.swift */; };
 		2BD336341D02606700441C73 /* AABB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336331D02606700441C73 /* AABB.swift */; };
+		2BD336361D028C2200441C73 /* BVHNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336351D028C2200441C73 /* BVHNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		0ADF47631CFDE6E400862832 /* Vec3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec3.swift; sourceTree = "<group>"; };
 		2B4900681CFCC6F600CF9A0E /* RayTracingWeekend */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracingWeekend; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD336331D02606700441C73 /* AABB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AABB.swift; sourceTree = "<group>"; };
+		2BD336351D028C2200441C73 /* BVHNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVHNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				0ADF47611CFDE6E400862832 /* Ray.swift */,
 				0ADF47621CFDE6E400862832 /* Sphere.swift */,
 				0ADF47631CFDE6E400862832 /* Vec3.swift */,
+				2BD336351D028C2200441C73 /* BVHNode.swift */,
 			);
 			path = RayTracingWeekend;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				0ADF476A1CFDE6E400862832 /* main.swift in Sources */,
 				0ADF476D1CFDE6E400862832 /* Ray.swift in Sources */,
 				0ADF476E1CFDE6E400862832 /* Sphere.swift in Sources */,
+				2BD336361D028C2200441C73 /* BVHNode.swift in Sources */,
 				0ADF47671CFDE6E400862832 /* HitableList.swift in Sources */,
 				0ADF47691CFDE6E400862832 /* Lambertian.swift in Sources */,
 				0ADF47641CFDE6E400862832 /* Camera.swift in Sources */,

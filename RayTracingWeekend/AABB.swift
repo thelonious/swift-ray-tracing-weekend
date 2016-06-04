@@ -12,7 +12,7 @@ public struct AABB {
     let min: Vec3
     let max: Vec3
     
-    func hit(r: Ray, tmin: Double, tmax: Double) -> Bool {
+    func hit(r: Ray, _ tmin: Double, _ tmax: Double) -> Bool {
         for a in 0..<3 {
             let t0 = ffmin((min[a] - r.origin[a]) / r.direction[a], (max[a] - r.origin[a]) / r.direction[a])
             let t1 = ffmax((min[a] - r.origin[a]) / r.direction[a], (max[a] - r.origin[a]) / r.direction[a])
