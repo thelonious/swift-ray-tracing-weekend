@@ -11,6 +11,7 @@ import Foundation
 public struct Ray {
     var origin: Vec3
     var direction: Vec3
+    var time: Double
     
     func point_at_parameter(t: Double) -> Vec3 {
         return origin + t * direction

@@ -32,7 +32,7 @@ func color(r: Ray, world: Hitable, depth: Int) -> Vec3 {
     var rec = HitRecord()
     
     if world.hit(r, 1e-6, DBL_MAX, &rec) {
-        var scattered = Ray(origin: Vec3(x: 0, y: 0, z: 0), direction: Vec3(x: 0, y: 0, z: 0))
+        var scattered = Ray(origin: Vec3(x: 0, y: 0, z: 0), direction: Vec3(x: 0, y: 0, z: 0), time: 0.0)
         var attenuantion = Vec3(x: 0, y: 0, z: 0)
         
         if depth < 50 && rec.material.scatter(r, rec, &attenuantion, &scattered) {
@@ -78,14 +78,21 @@ func makeRandomWorld() -> Hitable {
     object = Sphere(c: Vec3(x: 0, y: -1000, z: 0), r: 1000, m: Lambertian(a: Vec3(x: 0.5, y: 0.5, z: 0.5)))
     world.add(object)
     
-    for a in -11..<11 {
-        for b in -11..<11 {
+    for a in -10..<10 {
+        for b in -10..<10 {
             let chooseMaterial = drand48()
             let center = Vec3(x: Double(a) + 0.9 * drand48(), y: 0.2, z: Double(b) + 0.9 * drand48())
             
             if (center - Vec3(x: 4, y: 0.2, z: 0)).length > 0.9 {
                 if chooseMaterial < 0.8 {
-                    object = Sphere(c: center, r: 0.2, m: Lambertian(a: Vec3(x: drand48()*drand48(), y: drand48()*drand48(), z: drand48()*drand48())))
+                    object = MovingSphere(
+                        cen0: center,
+                        cen1: center + Vec3(x: 0, y: 0.5 * drand48(), z: 0),
+                        t0: 0.0,
+                        t1: 1.0,
+                        r: 0.2,
+                        m: Lambertian(a: Vec3(x: drand48()*drand48(), y: drand48()*drand48(), z: drand48()*drand48()))
+                    )
                     world.add(object)
                 }
                 else if chooseMaterial < 0.95 {
@@ -118,8 +125,8 @@ func makeRandomWorld() -> Hitable {
 
 // main
 
-var nx = 400
-var ny = 200
+var nx = 800
+var ny = 400
 var ns = 10
 
 for i in 0..<Process.arguments.count {
@@ -144,7 +151,7 @@ for i in 0..<Process.arguments.count {
 let lookFrom = Vec3(x: 13, y: 2, z: 3)
 let lookAt = Vec3(x: 0, y: 0, z: 0)
 let distToFocus = 10.0 //(lookFrom - lookAt).length
-let aperture = 0.1 // 2.0
+let aperture = 0.0 // 2.0
 let cam = Camera(
     lookFrom: lookFrom,
     lookAt: lookAt,
@@ -152,7 +159,9 @@ let cam = Camera(
     vfov: 20.0,
     aspect: Double(nx) / Double(ny),
     aperture: aperture,
-    focus_dist: distToFocus
+    focus_dist: distToFocus,
+    t0: 0.0,
+    t1: 1.0
 )
 
 //let world = makeWorld()

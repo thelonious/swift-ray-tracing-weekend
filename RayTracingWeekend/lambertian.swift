@@ -18,7 +18,7 @@ class Lambertian: Material {
     func scatter(ray_in: Ray, _ rec: HitRecord, inout _ attenuation: Vec3, inout _ scattered: Ray) -> Bool {
         let target = rec.p + rec.normal + random_in_unit_sphere()
         
-        scattered = Ray(origin: rec.p, direction: target - rec.p)
+        scattered = Ray(origin: rec.p, direction: target - rec.p, time: ray_in.time)
         attenuation = albedo
         
         return true

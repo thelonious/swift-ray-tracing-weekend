@@ -17,8 +17,13 @@ struct Camera {
     let u: Vec3
     let v: Vec3
     let w: Vec3
+    let time0: Double
+    let time1: Double
     
-    init(lookFrom: Vec3, lookAt: Vec3, vup: Vec3, vfov: Double, aspect: Double, aperture: Double, focus_dist: Double) {
+    init(lookFrom: Vec3, lookAt: Vec3, vup: Vec3, vfov: Double, aspect: Double, aperture: Double, focus_dist: Double, t0: Double, t1: Double) {
+        time0 = t0
+        time1 = t1
+        
         lensRadius = aperture * 0.5
         
         let theta = vfov * M_PI / 180.0
@@ -40,11 +45,12 @@ struct Camera {
     func get_ray(s: Double, _ t: Double) -> Ray {
         let rd = lensRadius * random_in_unit_disk()
         let offset = u * rd.x + v * rd.y
-//        let offset = Vec3(x: 0, y: 0, z: 0)
+        let time = time0 + drand48() * (time1 - time0)
         
         return Ray(
             origin: origin + offset,
-            direction: lower_left_corner + (s * horizontal) + (t * vertical) - origin - offset
+            direction: lower_left_corner + (s * horizontal) + (t * vertical) - origin - offset,
+            time: time
         );
     }
 }

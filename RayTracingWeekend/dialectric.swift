@@ -45,10 +45,10 @@ struct Dielectric: Material {
         }
         
         if drand48() < reflect_prob {
-            scattered = Ray(origin: rec.p, direction: reflected)
+            scattered = Ray(origin: rec.p, direction: reflected, time: r_in.time)
         }
         else {
-            scattered = Ray(origin: rec.p, direction: refracted)
+            scattered = Ray(origin: rec.p, direction: refracted, time: r_in.time)
         }
         
         return true

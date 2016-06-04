@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A5014831D00D4E8005A6764 /* MovingSphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5014821D00D4E8005A6764 /* MovingSphere.swift */; };
 		0ADF47641CFDE6E400862832 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47581CFDE6E400862832 /* Camera.swift */; };
 		0ADF47651CFDE6E400862832 /* Dialectric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47591CFDE6E400862832 /* Dialectric.swift */; };
 		0ADF47661CFDE6E400862832 /* Hitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF475A1CFDE6E400862832 /* Hitable.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A5014821D00D4E8005A6764 /* MovingSphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingSphere.swift; sourceTree = "<group>"; };
 		0ADF47581CFDE6E400862832 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		0ADF47591CFDE6E400862832 /* Dialectric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialectric.swift; sourceTree = "<group>"; };
 		0ADF475A1CFDE6E400862832 /* Hitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hitable.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				0ADF475E1CFDE6E400862832 /* main.swift */,
 				0ADF475F1CFDE6E400862832 /* Material.swift */,
 				0ADF47601CFDE6E400862832 /* Metal.swift */,
+				0A5014821D00D4E8005A6764 /* MovingSphere.swift */,
 				0ADF47611CFDE6E400862832 /* Ray.swift */,
 				0ADF47621CFDE6E400862832 /* Sphere.swift */,
 				0ADF47631CFDE6E400862832 /* Vec3.swift */,
@@ -162,6 +165,7 @@
 				0ADF47691CFDE6E400862832 /* Lambertian.swift in Sources */,
 				0ADF47641CFDE6E400862832 /* Camera.swift in Sources */,
 				0ADF47681CFDE6E400862832 /* HitRecord.swift in Sources */,
+				0A5014831D00D4E8005A6764 /* MovingSphere.swift in Sources */,
 				0ADF476F1CFDE6E400862832 /* Vec3.swift in Sources */,
 				0ADF47651CFDE6E400862832 /* Dialectric.swift in Sources */,
 			);
