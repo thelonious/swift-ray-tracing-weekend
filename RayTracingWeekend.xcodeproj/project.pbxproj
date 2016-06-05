@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A5014831D00D4E8005A6764 /* MovingSphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5014821D00D4E8005A6764 /* MovingSphere.swift */; };
+		0A9E603C1D03D79B0009FCEC /* ImageTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E603B1D03D79B0009FCEC /* ImageTexture.swift */; };
 		0ADF47641CFDE6E400862832 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47581CFDE6E400862832 /* Camera.swift */; };
 		0ADF47651CFDE6E400862832 /* Dialectric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47591CFDE6E400862832 /* Dialectric.swift */; };
 		0ADF47661CFDE6E400862832 /* Hitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF475A1CFDE6E400862832 /* Hitable.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		0A5014821D00D4E8005A6764 /* MovingSphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingSphere.swift; sourceTree = "<group>"; };
+		0A9E603B1D03D79B0009FCEC /* ImageTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTexture.swift; sourceTree = "<group>"; };
 		0ADF47581CFDE6E400862832 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		0ADF47591CFDE6E400862832 /* Dialectric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialectric.swift; sourceTree = "<group>"; };
 		0ADF475A1CFDE6E400862832 /* Hitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hitable.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				0ADF475A1CFDE6E400862832 /* Hitable.swift */,
 				0ADF475B1CFDE6E400862832 /* HitableList.swift */,
 				0ADF475C1CFDE6E400862832 /* HitRecord.swift */,
+				0A9E603B1D03D79B0009FCEC /* ImageTexture.swift */,
 				0ADF475D1CFDE6E400862832 /* Lambertian.swift */,
 				0ADF475E1CFDE6E400862832 /* main.swift */,
 				0ADF475F1CFDE6E400862832 /* Material.swift */,
@@ -184,6 +187,7 @@
 				2BD3363C1D03747A00441C73 /* CheckerTexture.swift in Sources */,
 				2BD3363A1D03729200441C73 /* ConstantTexture.swift in Sources */,
 				0ADF476D1CFDE6E400862832 /* Ray.swift in Sources */,
+				0A9E603C1D03D79B0009FCEC /* ImageTexture.swift in Sources */,
 				0ADF476E1CFDE6E400862832 /* Sphere.swift in Sources */,
 				2BD336361D028C2200441C73 /* BVHNode.swift in Sources */,
 				0ADF47671CFDE6E400862832 /* HitableList.swift in Sources */,

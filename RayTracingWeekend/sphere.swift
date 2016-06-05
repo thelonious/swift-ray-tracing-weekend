@@ -20,8 +20,6 @@ class Sphere: Hitable  {
     }
     
     func hit(r: Ray, _ t_min: Double, _ t_max: Double) -> HitRecord? {
-        var result: HitRecord? = nil
-        
         let oc = r.origin - center
         let a = r.direction.squared_length
         let b = oc.dot(r.direction)
@@ -33,24 +31,35 @@ class Sphere: Hitable  {
             
             if temp < t_max && temp > t_min {
                 let point = r.point_at_parameter(temp)
+                let uv = getSphereUV((point - center) / radius)
                 
-                result = HitRecord(t: temp, p: point, normal: (point - center) / radius, material: material)
+                return HitRecord(t: temp, p: point, u: uv.0, v: uv.1, normal: (point - center) / radius, material: material)
             }
-            else {
-                temp = (-b + discrim) / a
+            
+            temp = (-b + discrim) / a
+            
+            if temp < t_max && temp > t_min {
+                let point = r.point_at_parameter(temp)
+                let uv = getSphereUV((point - center) / radius)
                 
-                if temp < t_max && temp > t_min {
-                    let point = r.point_at_parameter(temp)
-                    
-                    result = HitRecord(t: temp, p: point, normal: (point - center) / radius, material: material)
-                }
+                return HitRecord(t: temp, p: point, u: uv.0, v: uv.1, normal: (point - center) / radius, material: material)
             }
         }
         
-        return result
+        return nil
     }
     
     func boundingBox(t0: Double, _ t1: Double) -> AABB? {
         return AABB(min: center - Vec3(x: radius, y: radius, z: radius), max: center + Vec3(x: radius, y: radius, z: radius))
     }
+}
+
+func getSphereUV(p: Vec3) -> (Double, Double) {
+    let phi = atan2(p.x, p.x)
+    let theta = asin(p.y)
+    
+    return (
+        1.0 - (phi + M_PI) / (2.0 * M_PI),
+        (theta + M_PI/2.0) / M_PI
+    )
 }

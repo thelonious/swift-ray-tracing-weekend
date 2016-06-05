@@ -138,10 +138,24 @@ func makePerlinSpheres() -> Hitable {
     return world
 }
 
+func makeEarth() -> Hitable {
+    let imageTexture = ImageTexture(path: "/Users/kevinlindsey/Dropbox/Projects/RayTracingWeekend/earth_day.jpg")
+    let world = HitableList()
+    var object: Hitable
+    
+    object = Sphere(c: Vec3(x: 0, y: -1000, z: 0), r: 1000, m: Lambertian(a: ConstantTexture(color: Vec3(x: 0.4, y: 0.2, z: 0.1))))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: 0, y: 2, z: 0), r: 2, m: Lambertian(a: imageTexture))
+    world.add(object)
+    
+    return world
+}
+
 // main
 
-var nx = 200
-var ny = 100
+var nx = 400
+var ny = 200
 var ns = 25
 
 for i in 0..<Process.arguments.count {
@@ -181,7 +195,8 @@ let cam = Camera(
 
 //let world = makeWorld()
 //let world = makeRandomWorld()
-let world = makePerlinSpheres()
+//let world = makePerlinSpheres()
+let world = makeEarth()
 
 print("P3")
 print(nx, ny)

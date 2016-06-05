@@ -26,8 +26,6 @@ class MovingSphere : Hitable {
     }
     
     func hit(r: Ray, _ t_min: Double, _ t_max: Double) -> HitRecord? {
-        var result: HitRecord? = nil
-        
         let oc = r.origin - center(r.time)
         let a = r.direction.squared_length
         let b = oc.dot(r.direction)
@@ -39,20 +37,22 @@ class MovingSphere : Hitable {
             
             if temp < t_max && temp > t_min {
                 let point = r.point_at_parameter(temp)
+                let uv = getSphereUV((point - center(r.time)) / radius)
                 
-                result = HitRecord(t: temp, p: point, normal: (point - center(r.time)) / radius, material: material)
+                return HitRecord(t: temp, p: point, u: uv.0, v: uv.1, normal: (point - center(r.time)) / radius, material: material)
             }
-            else {
-                temp = (-b + discrim) / a
+
+            temp = (-b + discrim) / a
+            
+            if temp < t_max && temp > t_min {
+                let point = r.point_at_parameter(temp)
+                let uv = getSphereUV((point - center(r.time)) / radius)
                 
-                if temp < t_max && temp > t_min {
-                    let point = r.point_at_parameter(temp)
-                    
-                    result = HitRecord(t: temp, p: point, normal: (point - center(r.time)) / radius, material: material)                }
+                return HitRecord(t: temp, p: point, u: uv.0, v: uv.1, normal: (point - center(r.time)) / radius, material: material)
             }
         }
         
-        return result
+        return nil
     }
     
     func center(time: Double) -> Vec3 {
