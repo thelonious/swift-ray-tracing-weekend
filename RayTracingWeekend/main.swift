@@ -125,7 +125,7 @@ func makeRandomWorld() -> Hitable {
 }
 
 func makePerlinSpheres() -> Hitable {
-    let perlinTexture = NoiseTexture()
+    let perlinTexture = NoiseTexture(scale: 5.0)
     let world = HitableList()
     var object: Hitable
     
@@ -140,8 +140,8 @@ func makePerlinSpheres() -> Hitable {
 
 // main
 
-var nx = 400
-var ny = 200
+var nx = 200
+var ny = 100
 var ns = 25
 
 for i in 0..<Process.arguments.count {
@@ -191,11 +191,10 @@ for j in (ny - 1).stride(through: 0, by: -1) {
     for i in 0..<nx {
         var col = Vec3(x: 0, y: 0, z: 0)
         
-        for s in 0..<ns {
+        for _ in 0..<ns {
             let u = (Double(i) + drand48()) / Double(nx)
             let v = (Double(j) + drand48()) / Double(ny)
             let r = cam.get_ray(u, v)
-            let p = r.point_at_parameter(2.0)
             
             col = col + color(r, world: world, depth: 0)
         }
