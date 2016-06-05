@@ -55,7 +55,7 @@ class Sphere: Hitable  {
 }
 
 func getSphereUV(p: Vec3) -> (Double, Double) {
-    let phi = atan2(p.x, p.x)
+    let phi = atan2(p.z, p.x)
     let theta = asin(p.y)
     
     return (

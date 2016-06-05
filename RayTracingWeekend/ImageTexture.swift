@@ -70,7 +70,7 @@ class ImageTexture : Texture {
     
     func value(u: Double, _ v: Double, _ p: Vec3) -> Vec3 {
         let x = Int(u * Double(width))
-        let y = Int(v * Double(height))
+        let y = Int((1.0 - v) * Double(height))
         
         let uncasted_data = CGBitmapContextGetData(context)
         let data = UnsafePointer<UInt8>(uncasted_data)

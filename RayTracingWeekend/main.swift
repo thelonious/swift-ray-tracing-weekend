@@ -178,7 +178,7 @@ for i in 0..<Process.arguments.count {
 }
 
 let lookFrom = Vec3(x: 13, y: 2, z: 3)
-let lookAt = Vec3(x: 0, y: 0, z: 0)
+let lookAt = Vec3(x: 0, y: 2, z: 0)
 let distToFocus = 10.0 //(lookFrom - lookAt).length
 let aperture = 0.0 // 2.0
 let cam = Camera(
