@@ -46,6 +46,20 @@ struct Perlin {
 //        return trilinearInterp(c, u, v, w)
         return perlinInterp(c, u, v, w)
     }
+    
+    func turbulence(p: Vec3, depth: Int) -> Double {
+        var accum = 0.0
+        var temp = p
+        var weight = 1.0
+        
+        for _ in 0..<depth {
+            accum += weight * noise(temp)
+            weight *= 0.5
+            temp = temp * 2
+        }
+        
+        return abs(accum)
+    }
 }
 
 func perlinGenerate() -> [Vec3] {

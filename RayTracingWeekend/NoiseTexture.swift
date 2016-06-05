@@ -21,6 +21,8 @@ struct NoiseTexture : Texture {
     }
     
     func value(u: Double, _ v: Double, _ p: Vec3) -> Vec3 {
-        return Vec3(x: 1, y: 1, z: 1) * 0.5 * (1 + noise.noise(scale * p))
+//        return Vec3(x: 1, y: 1, z: 1) * 0.5 * (1 + noise.noise(scale * p))
+//        return Vec3(x: 1, y: 1, z: 1) * noise.turbulence(scale * p, depth: 7)
+        return Vec3(x: 1, y: 1, z: 1) * 0.5 * (1 + sin(scale * p.z + 10 * noise.turbulence(p, depth: 7)))
     }
 }
