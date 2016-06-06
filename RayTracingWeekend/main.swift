@@ -139,7 +139,8 @@ func makePerlinSpheres() -> Hitable {
 }
 
 func makeEarth() -> Hitable {
-    let imageTexture = ImageTexture(path: "/Users/kevinlindsey/Dropbox/Projects/RayTracingWeekend/earth_day.jpg")
+//    let imageTexture = ImageTexture(path: "/Users/kevinlindsey/Dropbox/Projects/RayTracingWeekend/earth_day.jpg")
+    let imageTexture = ImageTexture(path: "/Users/kevinlindsey/Dropbox/Projects/RayTracingWeekend/flat_earth_by_enforcedcrowd.jpg")
     let world = HitableList()
     var object: Hitable
     
@@ -177,7 +178,8 @@ for i in 0..<Process.arguments.count {
     }
 }
 
-let lookFrom = Vec3(x: 13, y: 2, z: 3)
+//let lookFrom = Vec3(x: 13, y: 2, z: 3)
+let lookFrom = Vec3(x: 0, y: 2, z: 13)
 let lookAt = Vec3(x: 0, y: 2, z: 0)
 let distToFocus = 10.0 //(lookFrom - lookAt).length
 let aperture = 0.0 // 2.0
