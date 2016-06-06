@@ -21,6 +21,7 @@
 		0ADF476D1CFDE6E400862832 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47611CFDE6E400862832 /* Ray.swift */; };
 		0ADF476E1CFDE6E400862832 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47621CFDE6E400862832 /* Sphere.swift */; };
 		0ADF476F1CFDE6E400862832 /* Vec3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47631CFDE6E400862832 /* Vec3.swift */; };
+		2B2CB6A11D05271200B43888 /* DiffuseLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2CB6A01D05271200B43888 /* DiffuseLight.swift */; };
 		2BD336341D02606700441C73 /* AABB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336331D02606700441C73 /* AABB.swift */; };
 		2BD336361D028C2200441C73 /* BVHNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336351D028C2200441C73 /* BVHNode.swift */; };
 		2BD336381D03725E00441C73 /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336371D03725E00441C73 /* Texture.swift */; };
@@ -57,6 +58,7 @@
 		0ADF47611CFDE6E400862832 /* Ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
 		0ADF47621CFDE6E400862832 /* Sphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
 		0ADF47631CFDE6E400862832 /* Vec3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec3.swift; sourceTree = "<group>"; };
+		2B2CB6A01D05271200B43888 /* DiffuseLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffuseLight.swift; sourceTree = "<group>"; };
 		2B4900681CFCC6F600CF9A0E /* RayTracingWeekend */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracingWeekend; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD336331D02606700441C73 /* AABB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AABB.swift; sourceTree = "<group>"; };
 		2BD336351D028C2200441C73 /* BVHNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVHNode.swift; sourceTree = "<group>"; };
@@ -78,6 +80,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B2CB69D1D05267D00B43888 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				2BD3363B1D03747A00441C73 /* CheckerTexture.swift */,
+				2BD336391D03729200441C73 /* ConstantTexture.swift */,
+				0A9E603B1D03D79B0009FCEC /* ImageTexture.swift */,
+				2BD3363F1D03789500441C73 /* NoiseTexture.swift */,
+				2BD336371D03725E00441C73 /* Texture.swift */,
+			);
+			name = Textures;
+			sourceTree = "<group>";
+		};
+		2B2CB69E1D05269000B43888 /* Materials */ = {
+			isa = PBXGroup;
+			children = (
+				0ADF47591CFDE6E400862832 /* Dialectric.swift */,
+				0ADF475D1CFDE6E400862832 /* Lambertian.swift */,
+				0ADF475F1CFDE6E400862832 /* Material.swift */,
+				0ADF47601CFDE6E400862832 /* Metal.swift */,
+				2B2CB6A01D05271200B43888 /* DiffuseLight.swift */,
+			);
+			name = Materials;
+			sourceTree = "<group>";
+		};
+		2B2CB69F1D0526AA00B43888 /* Hitables */ = {
+			isa = PBXGroup;
+			children = (
+				2BD336351D028C2200441C73 /* BVHNode.swift */,
+				0ADF475A1CFDE6E400862832 /* Hitable.swift */,
+				0ADF475B1CFDE6E400862832 /* HitableList.swift */,
+				0A5014821D00D4E8005A6764 /* MovingSphere.swift */,
+				0ADF47621CFDE6E400862832 /* Sphere.swift */,
+			);
+			name = Hitables;
+			sourceTree = "<group>";
+		};
 		2B49005F1CFCC6F600CF9A0E = {
 			isa = PBXGroup;
 			children = (
@@ -97,26 +135,15 @@
 		2B49006A1CFCC6F600CF9A0E /* RayTracingWeekend */ = {
 			isa = PBXGroup;
 			children = (
+				2B2CB69D1D05267D00B43888 /* Textures */,
+				2B2CB69E1D05269000B43888 /* Materials */,
+				2B2CB69F1D0526AA00B43888 /* Hitables */,
 				2BD336331D02606700441C73 /* AABB.swift */,
-				2BD336351D028C2200441C73 /* BVHNode.swift */,
 				0ADF47581CFDE6E400862832 /* Camera.swift */,
-				2BD3363B1D03747A00441C73 /* CheckerTexture.swift */,
-				2BD336391D03729200441C73 /* ConstantTexture.swift */,
-				0ADF47591CFDE6E400862832 /* Dialectric.swift */,
-				0ADF475A1CFDE6E400862832 /* Hitable.swift */,
-				0ADF475B1CFDE6E400862832 /* HitableList.swift */,
 				0ADF475C1CFDE6E400862832 /* HitRecord.swift */,
-				0A9E603B1D03D79B0009FCEC /* ImageTexture.swift */,
-				0ADF475D1CFDE6E400862832 /* Lambertian.swift */,
 				0ADF475E1CFDE6E400862832 /* main.swift */,
-				0ADF475F1CFDE6E400862832 /* Material.swift */,
-				0ADF47601CFDE6E400862832 /* Metal.swift */,
-				0A5014821D00D4E8005A6764 /* MovingSphere.swift */,
-				2BD3363F1D03789500441C73 /* NoiseTexture.swift */,
 				2BD3363D1D03767200441C73 /* Perlin.swift */,
 				0ADF47611CFDE6E400862832 /* Ray.swift */,
-				0ADF47621CFDE6E400862832 /* Sphere.swift */,
-				2BD336371D03725E00441C73 /* Texture.swift */,
 				0ADF47631CFDE6E400862832 /* Vec3.swift */,
 			);
 			path = RayTracingWeekend;
@@ -188,6 +215,7 @@
 				2BD3363A1D03729200441C73 /* ConstantTexture.swift in Sources */,
 				0ADF476D1CFDE6E400862832 /* Ray.swift in Sources */,
 				0A9E603C1D03D79B0009FCEC /* ImageTexture.swift in Sources */,
+				2B2CB6A11D05271200B43888 /* DiffuseLight.swift in Sources */,
 				0ADF476E1CFDE6E400862832 /* Sphere.swift in Sources */,
 				2BD336361D028C2200441C73 /* BVHNode.swift in Sources */,
 				0ADF47671CFDE6E400862832 /* HitableList.swift in Sources */,

@@ -10,4 +10,5 @@ import Foundation
 
 protocol Material {
     func scatter(r_in: Ray, _ rec: HitRecord, inout _ attentuation: Vec3, inout _ scattered: Ray) -> Bool
+    func emitted(u: Double, v: Double, p: Vec3) -> Vec3
 }

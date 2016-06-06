@@ -53,6 +53,10 @@ struct Dielectric: Material {
         
         return true
     }
+    
+    func emitted(u: Double, v: Double, p: Vec3) -> Vec3 {
+        return Vec3(x: 0.0, y: 0.0, z: 0.0)
+    }
 }
 
 func refract(v: Vec3, n: Vec3, ni_over_nt: Double, inout refracted: Vec3) -> Bool {
