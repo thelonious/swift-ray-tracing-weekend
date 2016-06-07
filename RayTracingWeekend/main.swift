@@ -32,18 +32,20 @@ func color(r: Ray, world: Hitable, depth: Int) -> Vec3 {
     if let rec = world.hit(r, 1e-6, DBL_MAX) {
         var scattered = Ray(origin: Vec3(x: 0, y: 0, z: 0), direction: Vec3(x: 0, y: 0, z: 0), time: 0.0)
         var attenuantion = Vec3(x: 0, y: 0, z: 0)
+        let emitted = rec.material.emitted(rec.u, v: rec.v, p: rec.p)
         
         if depth < 50 && rec.material.scatter(r, rec, &attenuantion, &scattered) {
-            return attenuantion * color(scattered, world: world, depth: depth + 1)
+            return emitted + attenuantion * color(scattered, world: world, depth: depth + 1)
         }
         else {
-            return Vec3(x: 0, y: 0, z: 0)
+            return emitted  // Vec3(x: 0, y: 0, z: 0)
         }
     } else {
-        let unit_direction = r.direction.unit_vector()
-        let t = 0.5 * (unit_direction.y + 1)
-        
-        return (1.0 - t) * Vec3(x: 1, y: 1, z: 1) + t * Vec3(x: 0.5, y: 0.7, z: 1.0)
+//        let unit_direction = r.direction.unit_vector()
+//        let t = 0.5 * (unit_direction.y + 1)
+//        
+//        return (1.0 - t) * Vec3(x: 1, y: 1, z: 1) + t * Vec3(x: 0.5, y: 0.7, z: 1.0)
+        return Vec3(x: 0, y: 0, z: 0)
     }
 }
 
@@ -153,11 +155,31 @@ func makeEarth() -> Hitable {
     return world
 }
 
+func makeSimpleLight() -> Hitable {
+    let perlinTexture = NoiseTexture(scale: 4.0)
+    let world = HitableList()
+    var object: Hitable
+    
+    object = Sphere(c: Vec3(x: 0, y: -1000, z: 0), r: 1000, m: Lambertian(a: perlinTexture))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: 0, y: 2, z: 0), r: 2, m: Lambertian(a: perlinTexture))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: 0, y: 7, z: 0), r: 2, m: DiffuseLight(emit: ConstantTexture(color: Vec3(x: 4, y: 4, z: 4))))
+    world.add(object)
+    
+    object = XYRect(x0: 3, x1: 5, y0: 1, y1: 3, k: -2, material: DiffuseLight(emit: ConstantTexture(color: Vec3(x: 4, y: 4, z: 4))))
+    world.add(object)
+    
+    return world
+}
+
 // main
 
 var nx = 400
 var ny = 200
-var ns = 25
+var ns = 100
 
 for i in 0..<Process.arguments.count {
     let arg = Process.arguments[i]
@@ -178,8 +200,8 @@ for i in 0..<Process.arguments.count {
     }
 }
 
-//let lookFrom = Vec3(x: 13, y: 2, z: 3)
-let lookFrom = Vec3(x: 0, y: 2, z: 13)
+let lookFrom = Vec3(x: 23, y: 3, z: 3)
+//let lookFrom = Vec3(x: 0, y: 2, z: 13)
 let lookAt = Vec3(x: 0, y: 2, z: 0)
 let distToFocus = 10.0 //(lookFrom - lookAt).length
 let aperture = 0.0 // 2.0
@@ -198,7 +220,8 @@ let cam = Camera(
 //let world = makeWorld()
 //let world = makeRandomWorld()
 //let world = makePerlinSpheres()
-let world = makeEarth()
+//let world = makeEarth()
+let world = makeSimpleLight()
 
 print("P3")
 print(nx, ny)
@@ -219,9 +242,9 @@ for j in (ny - 1).stride(through: 0, by: -1) {
         col = col / Double(ns)
         col = Vec3(x: sqrt(col.r), y: sqrt(col.g), z: sqrt(col.b))
         
-        let ir = UInt8(255 * col.r)
-        let ig = UInt8(255 * col.g)
-        let ib = UInt8(255 * col.b)
+        let ir = UInt8(255 * min(1.0, col.r))
+        let ig = UInt8(255 * min(1.0, col.g))
+        let ib = UInt8(255 * min(1.0, col.b))
         
         print(ir, ig, ib)
     }

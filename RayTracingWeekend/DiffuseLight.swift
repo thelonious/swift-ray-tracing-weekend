@@ -16,6 +16,6 @@ struct DiffuseLight : Material {
     }
     
     func emitted(u: Double, v: Double, p: Vec3) -> Vec3 {
-        emit.value(u, v, p)
+        return emit.value(u, v, p)
     }
 }
