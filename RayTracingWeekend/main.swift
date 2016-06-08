@@ -177,9 +177,9 @@ func makeSimpleLight() -> Hitable {
 
 // main
 
-var nx = 400
-var ny = 200
-var ns = 100
+var nx = 200
+var ny = 100
+var ns = 25
 
 for i in 0..<Process.arguments.count {
     let arg = Process.arguments[i]
@@ -242,9 +242,13 @@ for j in (ny - 1).stride(through: 0, by: -1) {
         col = col / Double(ns)
         col = Vec3(x: sqrt(col.r), y: sqrt(col.g), z: sqrt(col.b))
         
-        let ir = UInt8(255 * min(1.0, col.r))
-        let ig = UInt8(255 * min(1.0, col.g))
-        let ib = UInt8(255 * min(1.0, col.b))
+        while col.r > 1.0 { col.r = 1.0 }
+        while col.g > 1.0 { col.g = 1.0 }
+        while col.b > 1.0 { col.b = 1.0 }
+        
+        let ir = UInt8(255 * col.r)
+        let ig = UInt8(255 * col.g)
+        let ib = UInt8(255 * col.b)
         
         print(ir, ig, ib)
     }
