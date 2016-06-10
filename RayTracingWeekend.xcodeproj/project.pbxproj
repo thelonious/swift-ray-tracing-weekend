@@ -23,6 +23,12 @@
 		0ADF476F1CFDE6E400862832 /* Vec3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF47631CFDE6E400862832 /* Vec3.swift */; };
 		2B2CB6A11D05271200B43888 /* DiffuseLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2CB6A01D05271200B43888 /* DiffuseLight.swift */; };
 		2B2CB6A31D05289600B43888 /* XYRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2CB6A21D05289600B43888 /* XYRect.swift */; };
+		2B660B6A1D0A0D5600CAE7CF /* XZRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B660B691D0A0D5600CAE7CF /* XZRect.swift */; };
+		2B660B6C1D0A0DFF00CAE7CF /* YZRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B660B6B1D0A0DFF00CAE7CF /* YZRect.swift */; };
+		2B660B6E1D0A101F00CAE7CF /* FlipNormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B660B6D1D0A101F00CAE7CF /* FlipNormal.swift */; };
+		2B660B701D0A139300CAE7CF /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B660B6F1D0A139300CAE7CF /* Box.swift */; };
+		2B660B721D0A169800CAE7CF /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B660B711D0A169800CAE7CF /* Translate.swift */; };
+		2B660B741D0A177A00CAE7CF /* RotateY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B660B731D0A177A00CAE7CF /* RotateY.swift */; };
 		2BD336341D02606700441C73 /* AABB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336331D02606700441C73 /* AABB.swift */; };
 		2BD336361D028C2200441C73 /* BVHNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336351D028C2200441C73 /* BVHNode.swift */; };
 		2BD336381D03725E00441C73 /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD336371D03725E00441C73 /* Texture.swift */; };
@@ -62,6 +68,12 @@
 		2B2CB6A01D05271200B43888 /* DiffuseLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffuseLight.swift; sourceTree = "<group>"; };
 		2B2CB6A21D05289600B43888 /* XYRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYRect.swift; sourceTree = "<group>"; };
 		2B4900681CFCC6F600CF9A0E /* RayTracingWeekend */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracingWeekend; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B660B691D0A0D5600CAE7CF /* XZRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XZRect.swift; sourceTree = "<group>"; };
+		2B660B6B1D0A0DFF00CAE7CF /* YZRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YZRect.swift; sourceTree = "<group>"; };
+		2B660B6D1D0A101F00CAE7CF /* FlipNormal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipNormal.swift; sourceTree = "<group>"; };
+		2B660B6F1D0A139300CAE7CF /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		2B660B711D0A169800CAE7CF /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
+		2B660B731D0A177A00CAE7CF /* RotateY.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateY.swift; sourceTree = "<group>"; };
 		2BD336331D02606700441C73 /* AABB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AABB.swift; sourceTree = "<group>"; };
 		2BD336351D028C2200441C73 /* BVHNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVHNode.swift; sourceTree = "<group>"; };
 		2BD336371D03725E00441C73 /* Texture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
@@ -109,12 +121,18 @@
 		2B2CB69F1D0526AA00B43888 /* Hitables */ = {
 			isa = PBXGroup;
 			children = (
+				2B660B6F1D0A139300CAE7CF /* Box.swift */,
 				2BD336351D028C2200441C73 /* BVHNode.swift */,
+				2B660B6D1D0A101F00CAE7CF /* FlipNormal.swift */,
 				0ADF475A1CFDE6E400862832 /* Hitable.swift */,
 				0ADF475B1CFDE6E400862832 /* HitableList.swift */,
 				0A5014821D00D4E8005A6764 /* MovingSphere.swift */,
 				0ADF47621CFDE6E400862832 /* Sphere.swift */,
 				2B2CB6A21D05289600B43888 /* XYRect.swift */,
+				2B660B691D0A0D5600CAE7CF /* XZRect.swift */,
+				2B660B6B1D0A0DFF00CAE7CF /* YZRect.swift */,
+				2B660B711D0A169800CAE7CF /* Translate.swift */,
+				2B660B731D0A177A00CAE7CF /* RotateY.swift */,
 			);
 			name = Hitables;
 			sourceTree = "<group>";
@@ -209,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B660B701D0A139300CAE7CF /* Box.swift in Sources */,
 				0ADF476B1CFDE6E400862832 /* Material.swift in Sources */,
 				2BD336341D02606700441C73 /* AABB.swift in Sources */,
 				0ADF476C1CFDE6E400862832 /* Metal.swift in Sources */,
@@ -216,6 +235,7 @@
 				0ADF476A1CFDE6E400862832 /* main.swift in Sources */,
 				2BD3363C1D03747A00441C73 /* CheckerTexture.swift in Sources */,
 				2BD3363A1D03729200441C73 /* ConstantTexture.swift in Sources */,
+				2B660B6E1D0A101F00CAE7CF /* FlipNormal.swift in Sources */,
 				0ADF476D1CFDE6E400862832 /* Ray.swift in Sources */,
 				0A9E603C1D03D79B0009FCEC /* ImageTexture.swift in Sources */,
 				2B2CB6A11D05271200B43888 /* DiffuseLight.swift in Sources */,
@@ -227,11 +247,15 @@
 				0ADF47641CFDE6E400862832 /* Camera.swift in Sources */,
 				0ADF47681CFDE6E400862832 /* HitRecord.swift in Sources */,
 				2BD3363E1D03767200441C73 /* Perlin.swift in Sources */,
+				2B660B6C1D0A0DFF00CAE7CF /* YZRect.swift in Sources */,
 				2BD336401D03789500441C73 /* NoiseTexture.swift in Sources */,
 				2B2CB6A31D05289600B43888 /* XYRect.swift in Sources */,
 				0A5014831D00D4E8005A6764 /* MovingSphere.swift in Sources */,
+				2B660B721D0A169800CAE7CF /* Translate.swift in Sources */,
 				0ADF476F1CFDE6E400862832 /* Vec3.swift in Sources */,
+				2B660B741D0A177A00CAE7CF /* RotateY.swift in Sources */,
 				0ADF47651CFDE6E400862832 /* Dialectric.swift in Sources */,
+				2B660B6A1D0A0D5600CAE7CF /* XZRect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

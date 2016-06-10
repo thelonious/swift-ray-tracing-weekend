@@ -175,11 +175,64 @@ func makeSimpleLight() -> Hitable {
     return world
 }
 
+func makeCornellBox() -> Hitable {
+    let world = HitableList()
+    let red = Lambertian(a: ConstantTexture(color: Vec3(x: 0.65, y: 0.05, z: 0.05)))
+    let white = Lambertian(a: ConstantTexture(color: Vec3(x: 0.73, y: 0.73, z: 0.73)))
+    let green = Lambertian(a: ConstantTexture(color: Vec3(x: 0.12, y: 0.45, z: 0.15)))
+    let light = DiffuseLight(emit: ConstantTexture(color: Vec3(x: 15, y: 15, z: 15)))
+    
+    world.add(FlipNormal(ptr: YZRect(y0: 0, y1: 555, z0: 0, z1: 555, k: 555, material: green)))
+    world.add(YZRect(y0: 0, y1: 555, z0: 0, z1: 555, k: 0, material: red))
+    world.add(XZRect(x0: 213, x1: 343, z0: 227, z1: 332, k: 554, material: light))
+    world.add(FlipNormal(ptr: XZRect(x0: 0, x1: 555, z0: 0, z1: 555, k: 555, material: white)))
+    world.add(XZRect(x0: 0, x1: 555, z0: 0, z1: 555, k: 0, material: white))
+    world.add(FlipNormal(ptr: XYRect(x0: 0, x1: 555, y0: 0, y1: 555, k: 555, material: white)))
+    
+    world.add(
+        Translate(ptr:
+            RotateY(p:
+                Box(p0: Vec3(x: 0, y: 0, z: 0), p1: Vec3(x: 165, y: 165, z: 165), material: white),
+                angle: -18),
+            offset: Vec3(x: 130, y: 0, z: 65)
+        )
+    )
+    world.add(
+        Translate(ptr:
+            RotateY(p:
+                Box(p0: Vec3(x: 0, y: 0, z: 0), p1: Vec3(x: 165, y: 330, z: 165), material: white),
+                angle: 15),
+            offset: Vec3(x: 265, y: 0, z: 295)
+        )
+    )
+    
+    return world
+}
+
+func makeDebugTest() -> Hitable {
+    let world = HitableList()
+    var object: Hitable
+    
+    object = Sphere(c: Vec3(x: 0, y: -1000, z: 0), r: 1000, m: Lambertian(a: ConstantTexture(color: Vec3(x: 0.4, y: 0.2, z: 0.1))))
+    world.add(object)
+    
+    object = Sphere(c: Vec3(x: 0, y: 2, z: 0), r: 2, m: Lambertian(a: ConstantTexture(color: Vec3(x: 0.24, y: 0.5, z: 0.15))))
+    world.add(object)
+    
+//    object = Sphere(c: Vec3(x: 0, y: 1007, z: 0), r: 1000, m: DiffuseLight(emit: ConstantTexture(color: Vec3(x: 1, y: 1, z: 1))))
+//    world.add(object)
+    
+    object = XYRect(x0: 3, x1: 5, y0: 1, y1: 3, k: -2, material: DiffuseLight(emit: ConstantTexture(color: Vec3(x: 4, y: 4, z: 4))))
+    world.add(object)
+    
+    return world
+}
+
 // main
 
 var nx = 200
-var ny = 100
-var ns = 25
+var ny = 200
+var ns = 400
 
 for i in 0..<Process.arguments.count {
     let arg = Process.arguments[i]
@@ -200,16 +253,17 @@ for i in 0..<Process.arguments.count {
     }
 }
 
-let lookFrom = Vec3(x: 23, y: 3, z: 3)
-//let lookFrom = Vec3(x: 0, y: 2, z: 13)
-let lookAt = Vec3(x: 0, y: 2, z: 0)
+let lookFrom = Vec3(x: 278, y: 278, z: -800)
+let lookAt = Vec3(x: 278, y: 278, z: 0)
 let distToFocus = 10.0 //(lookFrom - lookAt).length
 let aperture = 0.0 // 2.0
+let vfov = 40.0
+
 let cam = Camera(
     lookFrom: lookFrom,
     lookAt: lookAt,
     vup: Vec3(x: 0, y: 1, z: 0),
-    vfov: 20.0,
+    vfov: vfov,
     aspect: Double(nx) / Double(ny),
     aperture: aperture,
     focus_dist: distToFocus,
@@ -221,7 +275,9 @@ let cam = Camera(
 //let world = makeRandomWorld()
 //let world = makePerlinSpheres()
 //let world = makeEarth()
-let world = makeSimpleLight()
+//let world = makeSimpleLight()
+let world = makeCornellBox()
+//let world = makeDebugTest()
 
 print("P3")
 print(nx, ny)
@@ -242,9 +298,10 @@ for j in (ny - 1).stride(through: 0, by: -1) {
         col = col / Double(ns)
         col = Vec3(x: sqrt(col.r), y: sqrt(col.g), z: sqrt(col.b))
         
-        while col.r > 1.0 { col.r = 1.0 }
-        while col.g > 1.0 { col.g = 1.0 }
-        while col.b > 1.0 { col.b = 1.0 }
+        // TEMP: clamp upper bounds
+        col.r = min(1.0, col.r)
+        col.g = min(1.0, col.g)
+        col.b = min(1.0, col.b)
         
         let ir = UInt8(255 * col.r)
         let ig = UInt8(255 * col.g)
