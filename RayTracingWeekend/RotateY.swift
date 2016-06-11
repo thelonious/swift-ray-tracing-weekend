@@ -23,7 +23,7 @@ struct RotateY : Hitable {
         
         if let bb = p.boundingBox(0, 1) {
             var min = Vec3(x: DBL_MAX, y: DBL_MAX, z: DBL_MAX)
-            var max = Vec3(x: DBL_MIN, y: DBL_MIN, z: DBL_MIN)
+            var max = Vec3(x: -DBL_MAX, y: -DBL_MAX, z: -DBL_MAX)
             
             for var i in 0..<2 {
                 let ii = Double(i)

@@ -209,6 +209,41 @@ func makeCornellBox() -> Hitable {
     return world
 }
 
+func makeCornellSmoke() -> Hitable {
+    let world = HitableList()
+    let red = Lambertian(a: ConstantTexture(color: Vec3(x: 0.65, y: 0.05, z: 0.05)))
+    let white = Lambertian(a: ConstantTexture(color: Vec3(x: 0.73, y: 0.73, z: 0.73)))
+    let green = Lambertian(a: ConstantTexture(color: Vec3(x: 0.12, y: 0.45, z: 0.15)))
+    let light = DiffuseLight(emit: ConstantTexture(color: Vec3(x: 7, y: 7, z: 7)))
+    
+    world.add(FlipNormal(ptr: YZRect(y0: 0, y1: 555, z0: 0, z1: 555, k: 555, material: green)))
+    world.add(YZRect(y0: 0, y1: 555, z0: 0, z1: 555, k: 0, material: red))
+    world.add(XZRect(x0: 113, x1: 443, z0: 127, z1: 432, k: 554, material: light))
+    world.add(FlipNormal(ptr: XZRect(x0: 0, x1: 555, z0: 0, z1: 555, k: 555, material: white)))
+    world.add(XZRect(x0: 0, x1: 555, z0: 0, z1: 555, k: 0, material: white))
+    world.add(FlipNormal(ptr: XYRect(x0: 0, x1: 555, y0: 0, y1: 555, k: 555, material: white)))
+    
+    let b1 =
+        Translate(
+            ptr: RotateY(
+                p: Box(p0: Vec3(x: 0, y: 0, z: 0), p1: Vec3(x: 165, y: 165, z: 165), material: white),
+                angle: -18),
+            offset: Vec3(x: 130, y: 0, z: 65)
+        )
+    let b2 =
+        Translate(
+            ptr: RotateY(
+                p: Box(p0: Vec3(x: 0, y: 0, z: 0), p1: Vec3(x: 165, y: 330, z: 165), material: white),
+                angle: 15),
+            offset: Vec3(x: 265, y: 0, z: 295)
+        )
+    
+    world.add(ConstantMedium(b: b1, d: 0.01, a: ConstantTexture(color: Vec3(x: 1.0, y: 1.0, z: 1.0))))
+    world.add(ConstantMedium(b: b2, d: 0.01, a: ConstantTexture(color: Vec3(x: 0.0, y: 0.0, z: 0.0))))
+    
+    return world
+}
+
 func makeDebugTest() -> Hitable {
     let world = HitableList()
     var object: Hitable
@@ -230,9 +265,9 @@ func makeDebugTest() -> Hitable {
 
 // main
 
-var nx = 200
-var ny = 200
-var ns = 400
+var nx = 100
+var ny = 100
+var ns = 25
 
 for i in 0..<Process.arguments.count {
     let arg = Process.arguments[i]
@@ -276,7 +311,8 @@ let cam = Camera(
 //let world = makePerlinSpheres()
 //let world = makeEarth()
 //let world = makeSimpleLight()
-let world = makeCornellBox()
+//let world = makeCornellBox()
+let world = makeCornellSmoke()
 //let world = makeDebugTest()
 
 print("P3")
