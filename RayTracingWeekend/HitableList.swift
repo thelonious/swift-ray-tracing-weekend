@@ -1,5 +1,5 @@
 //
-//  hitable_list.swift
+//  HitableList.swift
 //  RayTracingWeekend
 //
 //  Created by Kevin Lindsey on 5/30/16.
