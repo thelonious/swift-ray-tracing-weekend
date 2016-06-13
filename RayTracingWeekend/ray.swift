@@ -8,12 +8,18 @@
 
 import Foundation
 
-public struct Ray : CustomStringConvertible {
+class Ray : CustomStringConvertible {
     var origin: Vec3
     var direction: Vec3
     var time: Double
     
-    public var description: String {
+    init(origin: Vec3, direction: Vec3, time: Double) {
+        self.origin = origin
+        self.direction = direction
+        self.time = time
+    }
+    
+    var description: String {
         return "origin: \(origin), direction: \(direction), time: \(time)"
     }
     

@@ -8,9 +8,14 @@
 
 import Foundation
 
-public struct AABB {
+class AABB {
     let min: Vec3
     let max: Vec3
+    
+    init(min: Vec3, max: Vec3) {
+        self.min = min
+        self.max = max
+    }
     
     func hit(r: Ray, _ tmin: Double, _ tmax: Double) -> Bool {
         for a in 0..<3 {

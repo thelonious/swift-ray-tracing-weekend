@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Perlin {
+class Perlin {
     let ranVector: [Vec3]
     let permX: [Int]
     let permY: [Int]

@@ -8,13 +8,22 @@
 
 import Foundation
 
-struct XZRect : Hitable {
+class XZRect : Hitable {
     let x0: Double
     let x1: Double
     let z0: Double
     let z1: Double
     let k: Double
     let material: Material
+    
+    init(x0: Double, x1: Double, z0: Double, z1: Double, k: Double, material: Material) {
+        self.x0 = x0
+        self.x1 = x1
+        self.z0 = z0
+        self.z1 = z1
+        self.k = k
+        self.material = material
+    }
     
     func hit(r: Ray, _ t_min: Double, _ t_max: Double) -> HitRecord? {
         let t = (k - r.origin.y) / r.direction.y

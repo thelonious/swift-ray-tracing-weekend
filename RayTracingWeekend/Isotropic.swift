@@ -8,8 +8,12 @@
 
 import Foundation
 
-struct Isotropic : Material {
+class Isotropic : Material {
     let albedo: Texture
+    
+    init(albedo: Texture) {
+        self.albedo = albedo
+    }
     
     func scatter(r_in: Ray, _ rec: HitRecord, inout _ attentuation: Vec3, inout _ scattered: Ray) -> Bool {
         scattered = Ray(origin: rec.p, direction: random_in_unit_sphere(), time: r_in.time)

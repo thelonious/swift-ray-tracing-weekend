@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Dielectric: Material {
+class Dielectric: Material {
     var ref_idx: Double
     
     init(index: Double) {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Camera {
+class Camera {
     let lower_left_corner: Vec3
     let horizontal: Vec3
     let vertical: Vec3

@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol Texture {
+protocol Texture {
     func value(u: Double, _ v: Double, _ p: Vec3) -> Vec3
 }

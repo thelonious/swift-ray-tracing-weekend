@@ -8,11 +8,15 @@
 
 import Foundation
 
-struct FlipNormal : Hitable {
+class FlipNormal : Hitable {
     let ptr: Hitable
     
+    init(ptr: Hitable) {
+        self.ptr = ptr
+    }
+    
     func hit(r: Ray, _ t_min: Double, _ t_max: Double) -> HitRecord? {
-        if var rec = ptr.hit(r, t_min, t_max) {
+        if let rec = ptr.hit(r, t_min, t_max) {
             rec.normal = -rec.normal
             
             return rec

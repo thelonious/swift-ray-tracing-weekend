@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ConstantMedium : Hitable {
+class ConstantMedium : Hitable {
     let boundary: Hitable
     let density: Double
     let phaseFunction: Material
@@ -20,8 +20,8 @@ struct ConstantMedium : Hitable {
     }
     
     func hit(r: Ray, _ t_min: Double, _ t_max: Double) -> HitRecord? {
-        if var rec1 = boundary.hit(r, -DBL_MAX, DBL_MAX) {
-            if var rec2 = boundary.hit(r, rec1.t + 0.0001, DBL_MAX) {
+        if let rec1 = boundary.hit(r, -DBL_MAX, DBL_MAX) {
+            if let rec2 = boundary.hit(r, rec1.t + 0.0001, DBL_MAX) {
                 if rec1.t < t_min {
                     rec1.t = t_min
                 }

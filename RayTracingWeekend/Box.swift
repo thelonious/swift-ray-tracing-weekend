@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Box : Hitable {
+class Box : Hitable {
     let pmin: Vec3
     let pmax: Vec3
     let sides: HitableList

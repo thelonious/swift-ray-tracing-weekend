@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NoiseTexture : Texture {
+class NoiseTexture : Texture {
     let noise = Perlin()
     let scale: Double
     

@@ -8,13 +8,22 @@
 
 import Foundation
 
-struct XYRect : Hitable {
+class XYRect : Hitable {
     let x0: Double
     let x1: Double
     let y0: Double
     let y1: Double
     let k: Double
     let material: Material
+    
+    init(x0: Double, x1: Double, y0: Double, y1: Double, k: Double, material: Material) {
+        self.x0 = x0
+        self.x1 = x1
+        self.y0 = y0
+        self.y1 = y1
+        self.k = k
+        self.material = material
+    }
     
     func hit(r: Ray, _ t_min: Double, _ t_max: Double) -> HitRecord? {
         let t = (k - r.origin.z) / r.direction.z

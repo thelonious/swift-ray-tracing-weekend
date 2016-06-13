@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Vec3 : CustomStringConvertible {
+struct Vec3 : CustomStringConvertible {
     var x: Double
     var y: Double
     var z: Double
@@ -68,7 +68,7 @@ public struct Vec3 : CustomStringConvertible {
         }
     }
     
-    public var description: String {
+    var description: String {
         return "\(x) \(y) \(z)"
     }
     

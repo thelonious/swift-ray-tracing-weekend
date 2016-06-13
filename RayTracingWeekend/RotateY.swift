@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RotateY : Hitable {
+class RotateY : Hitable {
     let ptr: Hitable
     let sinTheta: Double
     let cosTheta: Double
@@ -71,7 +71,7 @@ struct RotateY : Hitable {
         
         let rotatedR = Ray(origin: origin, direction: direction, time: r.time)
         
-        if var rec = ptr.hit(rotatedR, t_min, t_max) {
+        if let rec = ptr.hit(rotatedR, t_min, t_max) {
             var p = rec.p
             var normal = rec.normal
             

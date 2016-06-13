@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Hitable {
+protocol Hitable {
     func hit(r: Ray, _ t_min: Double, _ t_max: Double) -> HitRecord?
     func boundingBox(t0: Double, _ t1: Double) -> AABB?
 }

@@ -8,8 +8,12 @@
 
 import Foundation
 
-struct ConstantTexture : Texture {
+class ConstantTexture : Texture {
     let color: Vec3
+    
+    init(color: Vec3) {
+        self.color = color
+    }
     
     func value(u: Double, _ v: Double, _ p: Vec3) -> Vec3 {
         return color

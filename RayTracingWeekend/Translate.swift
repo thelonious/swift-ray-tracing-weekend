@@ -8,14 +8,19 @@
 
 import Foundation
 
-struct Translate : Hitable {
+class Translate : Hitable {
     let ptr: Hitable
     let offset: Vec3
+    
+    init(ptr: Hitable, offset: Vec3) {
+        self.ptr = ptr
+        self.offset = offset
+    }
     
     func hit(r: Ray, _ t_min: Double, _ t_max: Double) -> HitRecord? {
         let movedRay = Ray(origin: r.origin - offset, direction: r.direction, time: r.time)
         
-        if var rec = ptr.hit(movedRay, t_min, t_max) {
+        if let rec = ptr.hit(movedRay, t_min, t_max) {
             rec.p = rec.p + offset
             
             return rec

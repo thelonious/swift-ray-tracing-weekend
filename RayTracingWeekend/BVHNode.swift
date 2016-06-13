@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BVHNode : Hitable {
+class BVHNode : Hitable {
     let left: Hitable
     let right: Hitable
     let box: AABB
