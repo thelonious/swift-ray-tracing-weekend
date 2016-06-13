@@ -52,6 +52,7 @@ public struct Vec3 : CustomStringConvertible {
             default:
                 assert(false, "Index out of range")
             }
+            return Double.NaN
         }
         set(newValue) {
             switch (index) {
