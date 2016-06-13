@@ -265,8 +265,8 @@ func makeDebugTest() -> Hitable {
 
 // main
 
-var nx = 100
-var ny = 100
+var nx = 50
+var ny = 50
 var ns = 25
 
 for i in 0..<Process.arguments.count {
