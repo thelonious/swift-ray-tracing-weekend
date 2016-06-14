@@ -25,18 +25,12 @@ class RotateY : Hitable {
             var min = Vec3(x: DBL_MAX, y: DBL_MAX, z: DBL_MAX)
             var max = Vec3(x: -DBL_MAX, y: -DBL_MAX, z: -DBL_MAX)
             
-            for var i in 0..<2 {
-                let ii = Double(i)
-                
-                for var j in 0..<2 {
-                    let jj = Double(j)
-                    
-                    for var k in 0..<2 {
-                        let kk = Double(k)
-                        
-                        let x = ii * bb.max.x + (1.0 - ii) * bb.min.x
-                        let y = jj * bb.max.y + (1.0 - jj) * bb.min.y
-                        let z = kk * bb.max.z + (1.0 - kk) * bb.min.z
+            for i in 0.0.stride(to: 2.0, by: 1.0) {
+                for j in 0.0.stride(to: 2.0, by: 1.0) {
+                    for k in 0.0.stride(to: 2.0, by: 1.0) {
+                        let x = i * bb.max.x + (1.0 - i) * bb.min.x
+                        let y = j * bb.max.y + (1.0 - j) * bb.min.y
+                        let z = k * bb.max.z + (1.0 - k) * bb.min.z
                         let newX = cosTheta * x + sinTheta * z
                         let newZ = -sinTheta * x + cosTheta * z
                         let tester = Vec3(x: newX, y: y, z: newZ)

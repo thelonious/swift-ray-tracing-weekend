@@ -20,11 +20,6 @@ class CheckerTexture : Texture {
     func value(u: Double, _ v: Double, _ p: Vec3) -> Vec3 {
         let sines = sin(10 * p.x) * sin(10 * p.y) * sin(10 * p.z)
         
-        if sines < 0.0 {
-            return odd.value(u, v, p)
-        }
-        else {
-            return even.value(u, v, p)
-        }
+        return sines < 0.0 ? odd.value(u, v, p) : even.value(u, v, p)
     }
 }
