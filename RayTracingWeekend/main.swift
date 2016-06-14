@@ -263,6 +263,18 @@ func makeDebugTest() -> Hitable {
     return world
 }
 
+func getSeed() -> UInt16 {
+    var seed: UInt16 = 0
+    let fd = open("/dev/random", O_RDONLY)
+    
+    if fd != -1 {
+        read(fd, &seed, 2)
+        close(fd)
+    }
+    
+    return seed
+}
+
 // main
 
 var nx = 50
